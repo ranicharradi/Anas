@@ -1,0 +1,57 @@
+@import "tailwindcss";
+
+/*
+ * Design tokens. Color is a PLACEHOLDER skin — reskin the whole deck by editing
+ * this one @theme block. Names are intentionally generic.
+ */
+@theme {
+  --color-paper: #f5f2ea;
+  --color-paper-deep: #ece7da;
+  --color-ink: #1b1d24;
+  --color-clinic: #0d6e85; /* primary accent (health teal) — placeholder */
+  --color-clinic-deep: #08515f;
+  --color-clinic-soft: #cfe6ea;
+  --color-coral: #cf5a4e; /* secondary accent — placeholder */
+  --color-muted: #6c7079;
+  --color-hair: #c8c2b2; /* hairline rules */
+
+  --font-display: "Fraunces Variable", serif;
+  --font-sans: "Inter Variable", system-ui, sans-serif;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  /* Atmospheric ground: warm paper with a soft off-center clinical glow. */
+  background:
+    radial-gradient(
+      120% 90% at 78% 12%,
+      color-mix(in srgb, var(--color-clinic-soft) 55%, transparent) 0%,
+      transparent 48%
+    ),
+    linear-gradient(180deg, var(--color-paper) 0%, var(--color-paper-deep) 100%);
+}
+
+/* Mono small-caps figure/label chrome used across slides. */
+.mono-label {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  font-feature-settings: "tnum" 1;
+}
+
+/* SplitText leaves these wrappers; keep reveals clipped to their line box. */
+.split-line {
+  overflow: hidden;
+  display: block;
+}
