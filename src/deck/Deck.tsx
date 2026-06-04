@@ -48,8 +48,6 @@ export default function Deck() {
     return () => window.removeEventListener("keydown", onKey);
   }, [go, count]);
 
-  const current = slides[index];
-
   return (
     <main className="relative h-full w-full overflow-hidden">
       {slides.map((slide, i) => {
@@ -78,13 +76,7 @@ export default function Deck() {
         />
       </div>
 
-      <header className="pointer-events-none absolute inset-x-0 top-0 flex items-center justify-between px-12 py-7 text-[11px] uppercase tracking-[0.28em] text-muted">
-        <span>{current.act}</span>
-        <span>Prévention des IST · Pratiques infirmières</span>
-      </header>
-
-      <footer className="pointer-events-none absolute inset-x-0 bottom-0 flex items-center justify-between px-12 py-7 text-[11px] uppercase tracking-[0.28em] text-muted">
-        <span className="max-w-[60%] truncate">{current.title}</span>
+      <footer className="pointer-events-none absolute inset-x-0 bottom-0 flex items-center justify-end px-12 py-7 text-[11px] uppercase tracking-[0.28em] text-muted">
         <span className="tabular-nums">
           {String(index + 1).padStart(2, "0")} /{" "}
           {String(count).padStart(2, "0")}
