@@ -1,7 +1,9 @@
-import { useRef, type ReactNode } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import { gsap, SplitText, useGSAP } from "@/deck/gsap";
+import { onSlideInnerNavigation } from "@/deck/keyboard";
 import type { SlideProps } from "@/deck/types";
 import { VitalLine } from "@/components/VitalLine";
+import { RoleInfirmier } from "@/components/illustrations/RoleInfirmier";
 
 /**
  * Introduction: fuses pages 4 (context + key figures) and 5 (problématique) of
@@ -13,8 +15,38 @@ import { VitalLine } from "@/components/VitalLine";
 
 const PILIERS = ["Sensibilisation", "Éducation", "Dépistage", "Accompagnement"];
 
+const PROBLEMATIQUE_QUESTIONS = [
+  "Quels sont les principaux obstacles socioculturels limitant l’éducation des adolescents en matière de prévention des IST ?",
+  "Dans quelle mesure les pratiques éducatives infirmières contribuent-elles à la réduction des comportements à risque chez les adolescents ?",
+  "Les infirmiers disposent-ils des moyens et des compétences nécessaires pour assurer une éducation préventive efficace sur les IST ?",
+  "Les adolescents en Tunisie bénéficient-ils d’une éducation suffisante concernant la prévention des IST ?",
+  "Quel est le niveau des pratiques éducatives des infirmiers dans la prévention des infections sexuellement transmissibles chez les adolescents ?",
+];
+
 export default function IntroSlide({ active }: SlideProps) {
   const root = useRef<HTMLDivElement>(null);
+  const [questionIndex, setQuestionIndex] = useState(0);
+  const [wasActive, setWasActive] = useState(active);
+
+  // Reset to the first question whenever the slide (re)enters. Done during
+  // render (React's "adjust state on prop change" pattern) instead of in an
+  // effect, which would trigger a cascading render.
+  if (active !== wasActive) {
+    setWasActive(active);
+    if (active) setQuestionIndex(0);
+  }
+
+  useEffect(() => {
+    if (!active) return;
+
+    return onSlideInnerNavigation((direction) => {
+      setQuestionIndex(
+        (i) =>
+          (i + direction + PROBLEMATIQUE_QUESTIONS.length) %
+          PROBLEMATIQUE_QUESTIONS.length,
+      );
+    });
+  }, [active]);
 
   useGSAP(
     () => {
@@ -41,7 +73,8 @@ export default function IntroSlide({ active }: SlideProps) {
           ".reveal",
           { y: 22, opacity: 0, duration: 0.6, stagger: 0.08 },
           0.3,
-        );
+        )
+        .from(".intro-photo", { opacity: 0, scale: 0.96, transformOrigin: "center", duration: 0.7 }, 0.35);
 
       root.current
         ?.querySelectorAll<HTMLElement>(".stat-count")
@@ -68,6 +101,24 @@ export default function IntroSlide({ active }: SlideProps) {
     { scope: root, dependencies: [active] },
   );
 
+  useGSAP(
+    () => {
+      if (!active) return;
+
+      gsap.fromTo(
+        ".problem-question",
+        { autoAlpha: 0, y: 18, filter: "blur(6px)" },
+        { autoAlpha: 1, y: 0, filter: "blur(0px)", duration: 0.62, ease: "power3.out" },
+      );
+      gsap.fromTo(
+        ".problem-dot.is-active",
+        { scale: 0.7 },
+        { scale: 1, duration: 0.45, ease: "back.out(2)" },
+      );
+    },
+    { scope: root, dependencies: [active, questionIndex] },
+  );
+
   return (
     <div
       ref={root}
@@ -81,12 +132,15 @@ export default function IntroSlide({ active }: SlideProps) {
             <CrossGlyph />
             01 · Introduction
           </p>
-          <h2 className="intro-title mt-2 font-display text-5xl font-light text-ink">
+          <h2 className="intro-title mt-2 font-display text-6xl font-light text-ink">
             Introduction
           </h2>
         </div>
-        <div className="reveal mb-1 hidden w-[34%] max-w-sm opacity-60 lg:block">
+        <div className="reveal mb-1 hidden w-[34%] max-w-sm lg:block">
           <VitalLine active={active} />
+          <div className="intro-photo mt-3 rounded-2xl border border-hair/50 bg-white/55 p-3 shadow-[0_28px_90px_rgba(27,29,36,0.16)] backdrop-blur-sm">
+            <RoleInfirmier className="h-32 w-full" />
+          </div>
         </div>
       </header>
 
@@ -109,7 +163,7 @@ export default function IntroSlide({ active }: SlideProps) {
 
         {/* Narrative */}
         <div className="flex flex-col justify-center gap-6">
-          <p className="reveal text-[17px] leading-relaxed text-ink/85">
+          <p className="reveal text-[19px] leading-relaxed text-ink/85">
             Les infections sexuellement transmissibles (IST) constituent un{" "}
             <strong className="font-semibold text-ink">
               problème majeur de santé publique
@@ -119,7 +173,7 @@ export default function IntroSlide({ active }: SlideProps) {
           </p>
 
           <div className="reveal">
-            <p className="text-[17px] leading-relaxed text-ink/85">
+            <p className="text-[19px] leading-relaxed text-ink/85">
               Les infirmiers sont{" "}
               <strong className="font-semibold text-ink">essentiels</strong>{" "}
               dans la lutte contre les IST chez les adolescents, un rôle adapté
@@ -129,7 +183,7 @@ export default function IntroSlide({ active }: SlideProps) {
               {PILIERS.map((p) => (
                 <span
                   key={p}
-                  className="rounded-full border border-clinic/30 bg-clinic-soft/40 px-4 py-1.5 text-sm font-medium text-clinic-deep"
+                  className="rounded-full border border-clinic/30 bg-clinic-soft/40 px-4 py-1.5 text-[15px] font-medium text-clinic-deep"
                 >
                   {p}
                 </span>
@@ -140,20 +194,33 @@ export default function IntroSlide({ active }: SlideProps) {
       </div>
 
       {/* Problématique */}
-      <div className="reveal relative overflow-hidden rounded-2xl border border-hair/60 border-l-[5px] border-l-coral bg-white/55 px-10 py-6 backdrop-blur-sm">
+      <div className="reveal relative rounded-2xl border border-hair/60 border-l-[5px] border-l-coral bg-white/55 px-10 py-6 backdrop-blur-sm">
         <span className="pointer-events-none absolute -right-4 -top-6 text-coral/[0.07] [&>svg]:h-32 [&>svg]:w-32">
           <IconCaduceus />
         </span>
-        <p className="mono-label text-coral">Problématique</p>
-        <p className="relative mt-2.5 font-display text-[21px] leading-snug text-ink">
+        <p className="relative font-display text-2xl leading-snug text-ink">
           Malgré les efforts de prévention en Tunisie, les adolescents restent
           vulnérables aux IST en raison des insuffisances éducatives et des
-          obstacles socioculturels.{" "}
-          <span className="italic text-clinic-deep">
-            Quel est le niveau réel des pratiques éducatives des infirmiers en
-            matière de prévention des IST chez les adolescents ?
-          </span>
+          obstacles socioculturels.
         </p>
+        <div className="relative mt-4 min-h-[6.5rem]">
+          <p key={questionIndex} className="problem-question font-display text-[1.45rem] italic leading-snug text-clinic-deep">
+            {PROBLEMATIQUE_QUESTIONS[questionIndex]}
+          </p>
+        </div>
+        <div className="relative mt-4 flex items-center gap-2">
+          {PROBLEMATIQUE_QUESTIONS.map((question, i) => (
+            <button
+              key={question}
+              type="button"
+              aria-label={`Afficher la question ${i + 1}`}
+              onClick={() => setQuestionIndex(i)}
+              className={`problem-dot h-2.5 rounded-full transition-all duration-300 ${
+                i === questionIndex ? "is-active w-9 bg-coral" : "w-2.5 bg-hair"
+              }`}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );
@@ -242,7 +309,7 @@ function Stat({
           </span>
           <span className="ml-1 text-clinic">{unit}</span>
         </p>
-        <p className="mt-1.5 max-w-[22ch] text-sm leading-snug text-muted">
+        <p className="mt-1.5 max-w-[24ch] text-[15px] leading-snug text-muted">
           {caption}
         </p>
       </div>
