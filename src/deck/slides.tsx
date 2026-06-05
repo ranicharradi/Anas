@@ -9,6 +9,7 @@ import CollecteSlide from "@/slides/CollecteSlide";
 import OutilsInformatiquesSlide from "@/slides/OutilsInformatiquesSlide";
 import ResultatsDiscussionSlide from "@/slides/ResultatsDiscussionSlide";
 import SocioDemoSlide from "@/slides/SocioDemoSlide";
+import ProgrammeIstSidaSlide from "@/slides/ProgrammeIstSidaSlide";
 import KnowledgeOverviewSlide from "@/slides/KnowledgeOverviewSlide";
 import SignesCliniquesSlide from "@/slides/SignesCliniquesSlide";
 import HpvDepistageSlide from "@/slides/HpvDepistageSlide";
@@ -85,6 +86,12 @@ export const slides: SlideDef[] = [
     title: "Caractéristiques sociodémographiques",
     act: "Résultats",
     Component: SocioDemoSlide,
+  },
+  {
+    id: "programme-ist-sida",
+    title: "Milieu d'exercice et programme national IST-Sida",
+    act: "Résultats",
+    Component: ProgrammeIstSidaSlide,
   },
   {
     id: "connaissances-transmission",

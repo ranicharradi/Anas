@@ -134,7 +134,7 @@ export default function SocioDemoSlide({ active }: SlideProps) {
             </h3>
           </div>
           <div className="shrink-0 text-right">
-            <p className="font-display text-6xl font-light leading-none text-ink">80</p>
+            <p className="font-display text-6xl font-light leading-none text-ink">50</p>
             <p className="mono-label mt-1 text-clinic">répondants</p>
           </div>
         </div>
