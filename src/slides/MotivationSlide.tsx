@@ -1,17 +1,13 @@
 import { useRef } from "react";
-import { ringPath } from "@/components/chartGeometry";
 import { gsap, SplitText, useGSAP } from "@/deck/gsap";
 import type { SlideProps } from "@/deck/types";
+import { PeopleWaffle } from "@/components/illustrations/PeopleWaffle";
 
-const RING_SIZE = 200;
-const RING_STROKE = 18;
-
-const RINGS = [
+const STATS = [
   {
     id: "competences",
     value: 94,
     color: "var(--color-clinic)",
-    trackColor: "var(--color-clinic-soft)",
     label: "souhaitent renforcer leurs compétences",
     note: "Volonté d'améliorer leurs pratiques en éducation aux IST et prise de conscience de leurs limites.",
   },
@@ -19,7 +15,6 @@ const RINGS = [
     id: "role",
     value: 84,
     color: "var(--color-coral)",
-    trackColor: "var(--color-hair)",
     label: "perçoivent l'éducation à la sexualité comme partie de leur rôle",
     note: "Implication dans la promotion de la santé sexuelle, conforme aux recommandations de l'OMS.",
   },
@@ -44,29 +39,26 @@ export default function MotivationSlide({ active }: SlideProps) {
         .from(".mot-sub", { y: 18, opacity: 0, duration: 0.55 }, 0.18)
         .from(".mot-panel", { y: 34, opacity: 0, duration: 0.65 }, 0.28)
         .from(".mot-ring-shell", { y: 28, opacity: 0, duration: 0.6, stagger: 0.12, ease: "back.out(1.4)" }, 0.44)
-        .from(".mot-caption", { y: 14, opacity: 0, duration: 0.45, stagger: 0.1 }, 0.72)
-        .from(".mot-note", { y: 12, opacity: 0, duration: 0.4, stagger: 0.1 }, 0.86);
+        .from(".pw-on", { scale: 0, opacity: 0, transformOrigin: "center", duration: 0.4, stagger: 0.006, ease: "back.out(2)" }, 0.55)
+        .from(".mot-caption", { y: 14, opacity: 0, duration: 0.45, stagger: 0.1 }, 0.78)
+        .from(".mot-note", { y: 12, opacity: 0, duration: 0.4, stagger: 0.1 }, 0.92);
 
-      RINGS.forEach((ring, i) => {
-        const arcEl = root.current?.querySelector<SVGPathElement>(`.mot-arc-${ring.id}`);
-        if (arcEl) arcEl.setAttribute("d", ringPath({ value: 0, size: RING_SIZE, stroke: RING_STROKE }));
-
-        const numberNode = root.current?.querySelector<HTMLElement>(`.mot-count-${ring.id}`);
+      STATS.forEach((stat, i) => {
+        const numberNode = root.current?.querySelector<HTMLElement>(`.mot-count-${stat.id}`);
         const counter = { v: 0 };
 
         tl.to(
           counter,
           {
-            v: ring.value,
+            v: stat.value,
             duration: 1.1,
             ease: "power2.out",
             snap: { v: 1 },
             onUpdate: () => {
               if (numberNode) numberNode.textContent = String(Math.round(counter.v));
-              arcEl?.setAttribute("d", ringPath({ value: counter.v, size: RING_SIZE, stroke: RING_STROKE }));
             },
           },
-          0.5 + i * 0.1,
+          0.6 + i * 0.1,
         );
       });
 
@@ -74,9 +66,6 @@ export default function MotivationSlide({ active }: SlideProps) {
     },
     { scope: root, dependencies: [active] },
   );
-
-  const cx = RING_SIZE / 2;
-  const trackPath = ringPath({ value: 100, size: RING_SIZE, stroke: RING_STROKE });
 
   return (
     <div ref={root} className="grid h-full grid-cols-[0.76fr_1.24fr] items-center gap-12 px-20 py-12">
@@ -98,43 +87,25 @@ export default function MotivationSlide({ active }: SlideProps) {
         </h3>
 
         <div className="mt-10 grid grid-cols-2 gap-10">
-          {RINGS.map((ring) => (
-            <div key={ring.id} className="mot-ring-shell flex flex-col items-center gap-4">
-              <div
-                className="relative grid place-items-center"
-                style={{ width: RING_SIZE, height: RING_SIZE }}
-              >
-                <svg
-                  width={RING_SIZE}
-                  height={RING_SIZE}
-                  viewBox={`0 0 ${RING_SIZE} ${RING_SIZE}`}
-                  className="-rotate-90"
-                  aria-label={`${ring.value} % : ${ring.label}`}
-                >
-                  <g transform={`translate(${cx} ${cx})`}>
-                    <path d={trackPath} fill={ring.trackColor} opacity={0.35} />
-                    <path
-                      className={`mot-arc-${ring.id}`}
-                      d={ringPath({ value: ring.value, size: RING_SIZE, stroke: RING_STROKE })}
-                      fill={ring.color}
-                    />
-                  </g>
-                </svg>
-                <div className="absolute inset-0 grid place-items-center text-center">
-                  <div>
-                    <p className="font-display text-[3.6rem] leading-none text-ink">
-                      <span className={`mot-count-${ring.id}`}>0</span>
-                      <span style={{ color: ring.color }}>%</span>
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <p className="mot-caption max-w-[16ch] text-center text-sm font-semibold leading-snug text-ink">
-                {ring.label}
+          {STATS.map((stat) => (
+            <div key={stat.id} className="mot-ring-shell flex flex-col items-center gap-4">
+              <p className="font-display text-[3.4rem] leading-none text-ink">
+                <span className={`mot-count-${stat.id}`}>0</span>
+                <span style={{ color: stat.color }}>%</span>
               </p>
-              <p className="mot-note max-w-[18ch] text-center text-xs leading-relaxed text-muted">
-                {ring.note}
+
+              <PeopleWaffle
+                value={stat.value}
+                color={stat.color}
+                fillClassName="pw-on"
+                className="h-[208px] w-auto"
+              />
+
+              <p className="mot-caption max-w-[18ch] text-center text-sm font-semibold leading-snug text-ink">
+                {stat.label}
+              </p>
+              <p className="mot-note max-w-[20ch] text-center text-xs leading-relaxed text-muted">
+                {stat.note}
               </p>
             </div>
           ))}
