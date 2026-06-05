@@ -17,6 +17,7 @@ import MotivationSlide from "@/slides/MotivationSlide";
 import CommunicationSlide from "@/slides/CommunicationSlide";
 import PratiquesEducativesSlide from "@/slides/PratiquesEducativesSlide";
 import RecommandationsSlide from "@/slides/RecommandationsSlide";
+import ChatbotSlide from "@/slides/ChatbotSlide";
 import ConclusionSlide from "@/slides/ConclusionSlide";
 
 /**
@@ -132,6 +133,12 @@ export const slides: SlideDef[] = [
     title: "Recommandations",
     act: "Recommandations",
     Component: RecommandationsSlide,
+  },
+  {
+    id: "assistant-ist",
+    title: "Un assistant pour la prévention",
+    act: "Recommandations",
+    Component: ChatbotSlide,
   },
   {
     id: "conclusion",
