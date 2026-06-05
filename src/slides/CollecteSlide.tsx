@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import { donutPaths } from "@/components/chartGeometry";
 import { gsap, SplitText, useGSAP } from "@/deck/gsap";
 import type { SlideProps } from "@/deck/types";
 
@@ -25,22 +26,13 @@ const VOLETS: Volet[] = [
 
 const TOTAL = VOLETS.reduce((s, v) => s + v.q, 0); // 34
 
-// Donut geometry
 const SIZE = 320;
 const STROKE = 40;
-const R = (SIZE - STROKE) / 2;
-const CIRC = 2 * Math.PI * R;
-const GAP = 0.02 * CIRC; // small gap between segments
-
-const SEGMENTS = (() => {
-  let offset = 0;
-  return VOLETS.map((v) => {
-    const len = (v.q / TOTAL) * CIRC - GAP;
-    const seg = { ...v, len, offset };
-    offset += (v.q / TOTAL) * CIRC;
-    return seg;
-  });
-})();
+const SEGMENTS = donutPaths({
+  data: VOLETS.map((v) => ({ label: v.label, value: v.q, color: v.color })),
+  size: SIZE,
+  stroke: STROKE,
+});
 
 export default function CollecteSlide({ active }: SlideProps) {
   const root = useRef<HTMLDivElement>(null);
@@ -59,7 +51,19 @@ export default function CollecteSlide({ active }: SlideProps) {
         .from(".col-kicker", { y: 14, opacity: 0, duration: 0.5 })
         .from(split.words, { yPercent: 120, duration: 0.7, stagger: 0.05 }, 0)
         .from(".col-sub", { y: 16, opacity: 0, duration: 0.5 }, 0.2)
-        .from(".donut-seg", { drawSVG: "0%", duration: 1.1, ease: "power2.out", stagger: 0.15 }, 0.35)
+        .from(
+          ".donut-seg",
+          {
+            scale: 0,
+            rotate: -16,
+            opacity: 0,
+            transformOrigin: "center",
+            duration: 0.75,
+            ease: "back.out(1.55)",
+            stagger: 0.15,
+          },
+          0.35,
+        )
         .from(
           ".volet-card",
           { x: 30, opacity: 0, duration: 0.6, stagger: 0.12 },
@@ -95,31 +99,19 @@ export default function CollecteSlide({ active }: SlideProps) {
       {/* Left: heading + donut */}
       <div className="flex flex-col">
         <p className="col-kicker mono-label text-clinic">02 · Méthodologie</p>
-        <h2 className="col-title mt-3 max-w-sm font-display text-5xl font-light leading-[1.05] text-ink">
+        <h2 className="col-title mt-3 max-w-md font-display text-6xl font-light leading-[1.04] text-ink">
           Méthode de collecte des données
         </h2>
-        <p className="col-sub mt-4 max-w-sm leading-relaxed text-muted">
+        <p className="col-sub mt-4 max-w-md text-lg leading-relaxed text-muted">
           Un questionnaire structuré en quatre volets, administré aux infirmiers
           des services ciblés.
         </p>
 
         <div className="relative mt-9 grid place-items-center self-start">
-          <svg width={SIZE} height={SIZE} viewBox={`0 0 ${SIZE} ${SIZE}`} className="-rotate-90">
-            <circle cx={SIZE / 2} cy={SIZE / 2} r={R} fill="none" stroke="var(--color-hair)" strokeOpacity={0.3} strokeWidth={STROKE} />
+          <svg width={SIZE} height={SIZE} viewBox={`0 0 ${SIZE} ${SIZE}`}>
+            <circle cx={SIZE / 2} cy={SIZE / 2} r={(SIZE - STROKE) / 2} fill="none" stroke="var(--color-hair)" strokeOpacity={0.3} strokeWidth={STROKE} />
             {SEGMENTS.map((s) => (
-              <circle
-                key={s.n}
-                className="donut-seg"
-                cx={SIZE / 2}
-                cy={SIZE / 2}
-                r={R}
-                fill="none"
-                stroke={s.color}
-                strokeWidth={STROKE}
-                strokeLinecap="butt"
-                strokeDasharray={`${s.len} ${CIRC - s.len}`}
-                strokeDashoffset={-s.offset}
-              />
+              <path key={s.label} className="donut-seg" d={s.path} fill={s.color} transform={`translate(${SIZE / 2} ${SIZE / 2})`} />
             ))}
           </svg>
           <div className="absolute inset-0 grid place-items-center text-center">
@@ -149,8 +141,8 @@ export default function CollecteSlide({ active }: SlideProps) {
 
             <div className="min-w-0 flex-1">
               <div className="flex items-baseline justify-between gap-4">
-                <p className="truncate text-[17px] font-semibold text-ink">{v.label}</p>
-                <p className="shrink-0 text-sm font-medium text-muted">
+                <p className="truncate text-[19px] font-semibold text-ink">{v.label}</p>
+                <p className="shrink-0 text-base font-medium text-muted">
                   <span className="count-up tabular-nums" data-to={v.q}>0</span> questions
                 </p>
               </div>

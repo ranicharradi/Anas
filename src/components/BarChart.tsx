@@ -18,8 +18,8 @@ export function BarChart({ data, active }: { data: Datum[]; active: boolean }) {
   const root = useRef<SVGSVGElement>(null);
 
   const W = 760;
-  const H = 400;
-  const m = { top: 36, right: 8, bottom: 64, left: 8 };
+  const H = 420;
+  const m = { top: 38, right: 8, bottom: 82, left: 8 };
 
   const x = scaleBand<string>()
     .domain(data.map((d) => d.label))
@@ -102,7 +102,7 @@ export function BarChart({ data, active }: { data: Datum[]; active: boolean }) {
           <text
             x={m.left}
             y={y(t) - 6}
-            fontSize={10.5}
+            fontSize={12}
             className="mono-label"
             fill="var(--color-muted)"
           >
@@ -143,7 +143,7 @@ export function BarChart({ data, active }: { data: Datum[]; active: boolean }) {
               x={bx + bw / 2}
               y={by - 12}
               textAnchor="middle"
-              fontSize={18}
+              fontSize={20}
               fontWeight={600}
               fill="var(--color-clinic-deep)"
             >
@@ -154,10 +154,14 @@ export function BarChart({ data, active }: { data: Datum[]; active: boolean }) {
               x={bx + bw / 2}
               y={H - m.bottom + 26}
               textAnchor="middle"
-              fontSize={12.5}
+              fontSize={14}
               fill="var(--color-muted)"
             >
-              {d.label}
+              {d.label.split(" ").map((part, i) => (
+                <tspan key={`${d.label}-${part}`} x={bx + bw / 2} dy={i === 0 ? 0 : 17}>
+                  {part}
+                </tspan>
+              ))}
             </text>
           </g>
         );

@@ -70,7 +70,7 @@ export default function TitleSlide({ active }: SlideProps) {
               className="h-11 w-auto rounded-[2px] shadow-sm"
             />
           </div>
-          <p className="text-center text-[10px] font-medium leading-snug tracking-wide text-muted">
+          <p className="text-center text-xs font-medium leading-snug tracking-wide text-muted">
             République Tunisienne
             <br />
             Ministère de l'Enseignement Supérieur
@@ -86,12 +86,12 @@ export default function TitleSlide({ active }: SlideProps) {
           Projet de fin d'études
         </p>
 
-        <p className="cover-kicker mt-3 max-w-xl font-display text-lg italic text-muted">
+        <p className="cover-kicker mt-3 max-w-2xl font-display text-xl italic text-muted">
           En vue de l'obtention du Diplôme de Licence Nationale en Sciences
           Infirmières
         </p>
 
-        <h1 className="cover-title mt-9 max-w-4xl font-display text-[2.9rem] font-light leading-[1.12] text-ink">
+        <h1 className="cover-title mt-9 max-w-5xl font-display text-[3.35rem] font-light leading-[1.08] text-ink">
           Les pratiques éducatives des infirmiers pour la prévention des
           maladies sexuellement transmissibles chez les adolescents
         </h1>
@@ -131,7 +131,7 @@ function Field({
     <div className={align === "right" ? "text-right" : "text-left"}>
       <p className="mono-label text-clinic">{label}</p>
       {values.map((v) => (
-        <p key={v} className="mt-1.5 text-[15px] font-medium text-ink">
+        <p key={v} className="mt-1.5 text-[17px] font-medium text-ink">
           {v}
         </p>
       ))}

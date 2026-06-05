@@ -164,7 +164,7 @@ export default function PlanSlide({ active }: SlideProps) {
                   x={s.x}
                   y={numY}
                   textAnchor="middle"
-                  fontSize={13}
+                  fontSize={14}
                   fontWeight={700}
                   letterSpacing="0.18em"
                   fill="var(--color-clinic)"
@@ -178,13 +178,13 @@ export default function PlanSlide({ active }: SlideProps) {
                   x={s.x}
                   y={labelY}
                   textAnchor="middle"
-                  fontSize={22}
+                  fontSize={25}
                   fontWeight={600}
                   fill="var(--color-ink)"
                   style={{ fontFamily: "var(--font-sans)" }}
                 >
                   {s.lines.map((ln, i) => (
-                    <tspan key={ln} x={s.x} dy={i === 0 ? 0 : 26}>
+                    <tspan key={ln} x={s.x} dy={i === 0 ? 0 : 29}>
                       {ln}
                     </tspan>
                   ))}

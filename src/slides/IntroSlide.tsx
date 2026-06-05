@@ -3,7 +3,8 @@ import { gsap, SplitText, useGSAP } from "@/deck/gsap";
 import { onSlideInnerNavigation } from "@/deck/keyboard";
 import type { SlideProps } from "@/deck/types";
 import { VitalLine } from "@/components/VitalLine";
-import { RoleInfirmier } from "@/components/illustrations/RoleInfirmier";
+import { DuotonePhoto } from "@/components/DuotonePhoto";
+import nurseEducation from "@/assets/photos/nurse-education.jpg";
 
 /**
  * Introduction: fuses pages 4 (context + key figures) and 5 (problématique) of
@@ -138,9 +139,12 @@ export default function IntroSlide({ active }: SlideProps) {
         </div>
         <div className="reveal mb-1 hidden w-[34%] max-w-sm lg:block">
           <VitalLine active={active} />
-          <div className="intro-photo mt-3 rounded-2xl border border-hair/50 bg-white/55 p-3 shadow-[0_28px_90px_rgba(27,29,36,0.16)] backdrop-blur-sm">
-            <RoleInfirmier className="h-32 w-full" />
-          </div>
+          <DuotonePhoto
+            src={nurseEducation}
+            alt="Infirmière partageant un support éducatif"
+            position="center"
+            className="intro-photo mt-3 h-28 w-full rounded-2xl ring-1 ring-hair/50 shadow-[0_28px_90px_rgba(27,29,36,0.16)]"
+          />
         </div>
       </header>
 

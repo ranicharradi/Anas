@@ -75,7 +75,7 @@ export default function PratiquesEducativesSlide({ active }: SlideProps) {
       </section>
 
       <section className="pe-board relative min-h-[610px] overflow-hidden rounded-lg border border-hair/60 bg-white/55 p-8 shadow-[0_28px_90px_rgba(27,29,36,0.12)] backdrop-blur-sm">
-        <EducationGroupe className="pointer-events-none absolute inset-0 h-full w-full" />
+        <EducationGroupe className="pointer-events-none absolute -bottom-10 -right-8 w-[360px] opacity-[0.13]" />
 
         <div className="relative z-10 grid grid-cols-[1fr_0.88fr] gap-5">
           <div className="flex flex-col gap-4">

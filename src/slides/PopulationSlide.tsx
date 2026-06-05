@@ -75,10 +75,10 @@ export default function PopulationSlide({ active }: SlideProps) {
     <div ref={root} className="flex h-full flex-col justify-center px-20 py-12">
       <header className="text-center">
         <p className="pop-kicker mono-label text-clinic">02 · Méthodologie</p>
-        <h2 className="pop-title mt-3 font-display text-5xl font-light text-ink">
+        <h2 className="pop-title mt-3 font-display text-6xl font-light text-ink">
           Population d'étude
         </h2>
-        <p className="pop-sub mt-4 text-muted">
+        <p className="pop-sub mt-4 text-xl text-muted">
           Infirmiers recrutés dans quatre services de soins
         </p>
       </header>
@@ -114,7 +114,7 @@ export default function PopulationSlide({ active }: SlideProps) {
 
             <div className="svc-label mt-6 text-center">
               {s.name.map((ln) => (
-                <p key={ln} className="text-lg font-semibold leading-snug text-ink">
+                <p key={ln} className="text-xl font-semibold leading-snug text-ink">
                   {ln}
                 </p>
               ))}

@@ -44,8 +44,8 @@ body {
 /* Mono small-caps figure/label chrome used across slides. */
 .mono-label {
   font-family: var(--font-sans);
-  font-size: 11px;
-  letter-spacing: 0.28em;
+  font-size: 12px;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
   font-feature-settings: "tnum" 1;
 }
@@ -54,4 +54,11 @@ body {
 .split-line {
   overflow: hidden;
   display: block;
+}
+
+/* Active camera-view control on the méthodologie map. */
+.view-chip.is-active {
+  background: var(--color-clinic-deep);
+  color: var(--color-paper);
+  border-color: var(--color-clinic-deep);
 }

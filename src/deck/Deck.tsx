@@ -1,4 +1,9 @@
 import { useCallback, useEffect, useState } from "react";
+import {
+  emitSlideInnerNavigation,
+  getKeyboardAction,
+  isEditableTarget,
+} from "./keyboard";
 import { slides } from "./slides";
 
 /**
@@ -10,6 +15,7 @@ import { slides } from "./slides";
  */
 export default function Deck() {
   const [index, setIndex] = useState(0);
+  const [navOpen, setNavOpen] = useState(false);
   const count = slides.length;
 
   const go = useCallback(
@@ -20,28 +26,26 @@ export default function Deck() {
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
-      switch (e.key) {
-        case "ArrowRight":
-        case "ArrowDown":
-        case " ":
-        case "PageDown":
-          e.preventDefault();
-          go(1);
-          break;
-        case "ArrowLeft":
-        case "ArrowUp":
-        case "PageUp":
-          e.preventDefault();
-          go(-1);
-          break;
-        case "Home":
-          e.preventDefault();
+      if (isEditableTarget(e.target)) return;
+
+      const action = getKeyboardAction(e);
+      if (!action) return;
+
+      e.preventDefault();
+
+      switch (action.kind) {
+        case "slide":
+          go(action.direction);
+          return;
+        case "inner":
+          emitSlideInnerNavigation(action.direction);
+          return;
+        case "home":
           setIndex(0);
-          break;
-        case "End":
-          e.preventDefault();
+          return;
+        case "end":
           setIndex(count - 1);
-          break;
+          return;
       }
     };
     window.addEventListener("keydown", onKey);
@@ -76,12 +80,56 @@ export default function Deck() {
         />
       </div>
 
-      <footer className="pointer-events-none absolute inset-x-0 bottom-0 flex items-center justify-end px-12 py-7 text-[11px] uppercase tracking-[0.28em] text-muted">
-        <span className="tabular-nums">
-          {String(index + 1).padStart(2, "0")} /{" "}
-          {String(count).padStart(2, "0")}
-        </span>
-      </footer>
+      {/* Right-edge slide navigator: a faint dot rail that expands into a
+          labeled panel on hover and collapses when the pointer leaves it. */}
+      <nav
+        onMouseEnter={() => setNavOpen(true)}
+        onMouseLeave={() => setNavOpen(false)}
+        className="pointer-events-auto absolute right-0 top-0 z-20 flex h-full items-center pr-4"
+        aria-label="Navigation des diapositives"
+      >
+        <ul
+          className={`flex flex-col gap-1.5 rounded-2xl py-3 pl-4 pr-3 transition-all duration-300 ease-out ${
+            navOpen
+              ? "bg-white/70 shadow-[0_20px_70px_rgba(27,29,36,0.16)] backdrop-blur-sm"
+              : ""
+          }`}
+        >
+          {slides.map((slide, i) => {
+            const isCurrent = i === index;
+            return (
+              <li key={slide.id}>
+                <button
+                  type="button"
+                  onClick={() => setIndex(i)}
+                  aria-current={isCurrent ? "true" : undefined}
+                  aria-label={`${i + 1}. ${slide.title}`}
+                  className="group flex w-full items-center justify-end gap-3"
+                >
+                  <span
+                    className={`overflow-hidden whitespace-nowrap text-right text-xs transition-all duration-300 ease-out ${
+                      navOpen ? "max-w-[15rem] opacity-100" : "max-w-0 opacity-0"
+                    } ${
+                      isCurrent
+                        ? "font-semibold text-ink"
+                        : "text-muted group-hover:text-ink"
+                    }`}
+                  >
+                    {slide.title}
+                  </span>
+                  <span
+                    className={`block shrink-0 rounded-full transition-all duration-300 ${
+                      isCurrent
+                        ? "h-2.5 w-2.5 bg-clinic"
+                        : "h-2 w-2 bg-ink/20 group-hover:bg-ink/40"
+                    } ${navOpen ? "opacity-100" : "opacity-50"}`}
+                  />
+                </button>
+              </li>
+            );
+          })}
+        </ul>
+      </nav>
     </main>
   );
 }

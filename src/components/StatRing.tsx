@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import { gsap, useGSAP } from "@/deck/gsap";
+import { ringPath } from "./chartGeometry";
 
 /**
  * Big single-percentage callout: a ring whose arc draws to the value while the
@@ -21,10 +22,9 @@ export function StatRing({
   const numRef = useRef<HTMLSpanElement>(null);
 
   const stroke = 14;
-  const r = (size - stroke) / 2;
   const cx = size / 2;
-  const circ = 2 * Math.PI * r;
-  const arc = (value / 100) * circ;
+  const trackPath = ringPath({ value: 100, size, stroke });
+  const valuePath = ringPath({ value, size, stroke });
 
   useGSAP(
     () => {
@@ -32,7 +32,14 @@ export function StatRing({
       const tl = gsap.timeline();
       tl.from(".ring-track", { opacity: 0, duration: 0.4 }).from(
         ".ring-arc",
-        { drawSVG: "0%", duration: 1.3, ease: "power2.out" },
+        {
+          opacity: 0,
+          rotate: -45,
+          scale: 0.9,
+          transformOrigin: "center",
+          duration: 1.3,
+          ease: "power2.out",
+        },
         0,
       );
 
@@ -67,34 +74,18 @@ export function StatRing({
         viewBox={`0 0 ${size} ${size}`}
         className="-rotate-90"
       >
-        <circle
-          className="ring-track"
-          cx={cx}
-          cy={cx}
-          r={r}
-          fill="none"
-          stroke="var(--color-clinic-soft)"
-          strokeWidth={stroke}
-        />
-        <circle
-          className="ring-arc"
-          cx={cx}
-          cy={cx}
-          r={r}
-          fill="none"
-          stroke="var(--color-clinic)"
-          strokeWidth={stroke}
-          strokeLinecap="round"
-          strokeDasharray={`${arc} ${circ}`}
-        />
+        <g transform={`translate(${cx} ${cx})`}>
+          <path className="ring-track" d={trackPath} fill="var(--color-clinic-soft)" />
+          <path className="ring-arc" d={valuePath} fill="var(--color-clinic)" />
+        </g>
       </svg>
       <div className="absolute inset-0 grid place-items-center text-center">
         <div>
-          <p className="font-display text-6xl leading-none text-ink">
+          <p className="font-display text-7xl leading-none text-ink">
             <span ref={numRef}>0</span>
             <span className="text-clinic">%</span>
           </p>
-          <p className="mono-label mt-3 max-w-[14ch] text-muted">{label}</p>
+          <p className="mono-label mt-4 max-w-[16ch] text-muted">{label}</p>
         </div>
       </div>
     </div>

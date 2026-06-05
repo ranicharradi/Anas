@@ -6,8 +6,18 @@ import MethodoSlide from "@/slides/MethodoSlide";
 import EtudeSlide from "@/slides/EtudeSlide";
 import PopulationSlide from "@/slides/PopulationSlide";
 import CollecteSlide from "@/slides/CollecteSlide";
-import StatSlide from "@/slides/StatSlide";
-import RingStatSlide from "@/slides/RingStatSlide";
+import OutilsInformatiquesSlide from "@/slides/OutilsInformatiquesSlide";
+import ResultatsDiscussionSlide from "@/slides/ResultatsDiscussionSlide";
+import SocioDemoSlide from "@/slides/SocioDemoSlide";
+import KnowledgeOverviewSlide from "@/slides/KnowledgeOverviewSlide";
+import SignesCliniquesSlide from "@/slides/SignesCliniquesSlide";
+import HpvDepistageSlide from "@/slides/HpvDepistageSlide";
+import ConsequencesSlide from "@/slides/ConsequencesSlide";
+import MotivationSlide from "@/slides/MotivationSlide";
+import CommunicationSlide from "@/slides/CommunicationSlide";
+import PratiquesEducativesSlide from "@/slides/PratiquesEducativesSlide";
+import RecommandationsSlide from "@/slides/RecommandationsSlide";
+import ConclusionSlide from "@/slides/ConclusionSlide";
 
 /**
  * The ordered slide registry. Adding a slide is one entry here. This scaffold
@@ -58,15 +68,75 @@ export const slides: SlideDef[] = [
     Component: CollecteSlide,
   },
   {
+    id: "outils-informatiques",
+    title: "Outils informatiques",
+    act: "Méthodologie",
+    Component: OutilsInformatiquesSlide,
+  },
+  {
+    id: "resultats-discussion",
+    title: "Résultat et discussion",
+    act: "Résultats",
+    Component: ResultatsDiscussionSlide,
+  },
+  {
+    id: "caracteristiques-sociodemographiques",
+    title: "Caractéristiques sociodémographiques",
+    act: "Résultats",
+    Component: SocioDemoSlide,
+  },
+  {
+    id: "connaissances-transmission",
+    title: "Connaissance des modes de transmission",
+    act: "Résultats",
+    Component: KnowledgeOverviewSlide,
+  },
+  {
     id: "signes-cliniques",
     title: "Identification des signes cliniques des IST",
     act: "Résultats",
-    Component: StatSlide,
+    Component: SignesCliniquesSlide,
+  },
+  {
+    id: "hpv-depistage",
+    title: "HPV et indications du dépistage",
+    act: "Résultats",
+    Component: HpvDepistageSlide,
+  },
+  {
+    id: "consequences-ist",
+    title: "Conséquences des IST non traitées",
+    act: "Résultats",
+    Component: ConsequencesSlide,
   },
   {
     id: "motivation-formation",
-    title: "Volonté de renforcer les compétences",
+    title: "Motivation et perception du rôle",
     act: "Résultats",
-    Component: RingStatSlide,
+    Component: MotivationSlide,
+  },
+  {
+    id: "communication-efficace",
+    title: "Facteurs favorisant une communication efficace",
+    act: "Résultats",
+    Component: CommunicationSlide,
+  },
+  {
+    id: "pratiques-educatives",
+    title: "Méthodes éducatives et difficultés",
+    act: "Résultats",
+    Component: PratiquesEducativesSlide,
+  },
+  {
+    id: "recommandations",
+    title: "Recommandations",
+    act: "Recommandations",
+    Component: RecommandationsSlide,
+  },
+  {
+    id: "conclusion",
+    title: "Conclusion",
+    act: "Conclusion",
+    Component: ConclusionSlide,
   },
 ];

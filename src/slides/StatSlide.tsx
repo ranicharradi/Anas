@@ -56,10 +56,10 @@ export default function StatSlide({ active }: SlideProps) {
     >
       <div>
         <p className="reveal mono-label text-clinic">Résultats · Connaissances</p>
-        <h2 className="headline mt-5 max-w-md font-display text-5xl font-light leading-[1.05]">
+        <h2 className="headline mt-5 max-w-xl font-display text-6xl font-light leading-[1.04]">
           Identification des signes cliniques des IST
         </h2>
-        <p className="reveal mt-7 max-w-md leading-relaxed text-muted">
+        <p className="reveal mt-7 max-w-lg text-lg leading-relaxed text-muted">
           Les professionnels reconnaissent plus facilement les signes évidents
           que les symptômes atypiques — un constat conforme aux données du CDC.
         </p>

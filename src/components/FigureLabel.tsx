@@ -18,7 +18,7 @@ export function FigureLabel({
         Fig. {index}
       </span>
       <span className="h-px flex-1 translate-y-[-3px] bg-hair" />
-      <span className="font-display text-sm italic text-muted">{caption}</span>
+      <span className="font-display text-base italic text-muted">{caption}</span>
     </figcaption>
   );
 }
