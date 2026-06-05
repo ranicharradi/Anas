@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import { EducationGroupe } from "@/components/illustrations/EducationGroupe";
+import { RankedBars } from "@/components/illustrations/RankedBars";
 import { gsap, SplitText, useGSAP } from "@/deck/gsap";
 import type { SlideProps } from "@/deck/types";
 
@@ -78,21 +79,15 @@ export default function PratiquesEducativesSlide({ active }: SlideProps) {
         <EducationGroupe className="pointer-events-none absolute -bottom-10 -right-8 w-[360px] opacity-[0.13]" />
 
         <div className="relative z-10 grid grid-cols-[1fr_0.88fr] gap-5">
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col justify-center gap-4">
             <p className="mono-label text-clinic">Méthodes éducatives</p>
-            {METHODS.map((method) => (
-              <article key={method.label} className="pe-card rounded-lg border border-hair/70 bg-white/82 p-5 shadow-[0_14px_35px_rgba(27,29,36,0.07)]">
-                <div className="flex items-baseline justify-between gap-4">
-                  <h3 className="text-lg font-semibold text-ink">{method.label}</h3>
-                  <p className="font-display text-4xl font-light leading-none" style={{ color: method.color }}>
-                    <span className="pe-count" data-to={method.value}>0</span>%
-                  </p>
-                </div>
-                <div className="mt-3 h-2 rounded-full bg-hair/40">
-                  <div className="pe-bar h-full rounded-full" style={{ width: `${method.value}%`, background: method.color }} />
-                </div>
-              </article>
-            ))}
+            <RankedBars
+              data={METHODS}
+              rowClassName="pe-card"
+              barClassName="pe-bar"
+              countClassName="pe-count"
+              className="mt-2 flex flex-col gap-7"
+            />
           </div>
 
           <div className="flex flex-col gap-4">
