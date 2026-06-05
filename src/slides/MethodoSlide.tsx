@@ -1,8 +1,6 @@
 import { useRef } from "react";
 import { gsap, SplitText, useGSAP } from "@/deck/gsap";
 import type { SlideProps } from "@/deck/types";
-import { DuotonePhoto } from "@/components/DuotonePhoto";
-import teamDiscussion from "@/assets/photos/team-discussion.jpg";
 
 /**
  * Méthodologie — act divider (page 7). A bold split: deep-clinic panel with an
@@ -75,8 +73,7 @@ export default function MethodoSlide({ active }: SlideProps) {
           ".helix-node",
           { scale: 0, transformOrigin: "center", duration: 0.4, stagger: 0.02 },
           1,
-        )
-        .from(".methodo-photo", { opacity: 0, scale: 0.96, transformOrigin: "center", duration: 0.7 }, 1.1);
+        );
 
       // gentle perpetual breathe of the helix
       gsap.to(".helix-wrap", {
@@ -123,13 +120,7 @@ export default function MethodoSlide({ active }: SlideProps) {
       </div>
 
       {/* Right: DNA helix on paper */}
-      <div className="relative flex flex-col items-center justify-center gap-6">
-        <DuotonePhoto
-          src={teamDiscussion}
-          alt="Équipe soignante en discussion"
-          position="center"
-          className="methodo-photo h-28 w-[72%] rounded-2xl ring-1 ring-hair/50 shadow-[0_28px_90px_rgba(27,29,36,0.16)]"
-        />
+      <div className="relative flex flex-col items-center justify-center">
         <div className="helix-wrap" style={{ perspective: 800 }}>
           <svg
             viewBox={`0 0 ${HELIX.W} ${HELIX.H}`}

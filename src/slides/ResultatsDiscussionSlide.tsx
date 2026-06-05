@@ -2,8 +2,6 @@ import { useRef } from "react";
 import { smoothLinePath } from "@/components/chartGeometry";
 import { gsap, SplitText, useGSAP } from "@/deck/gsap";
 import type { SlideProps } from "@/deck/types";
-import { DuotonePhoto } from "@/components/DuotonePhoto";
-import nurseTablet from "@/assets/photos/nurse-tablet.jpg";
 
 const DOTS = Array.from({ length: 54 }, (_, i) => {
   const row = Math.floor(i / 9);
@@ -47,8 +45,7 @@ export default function ResultatsDiscussionSlide({ active }: SlideProps) {
         .from(".rd-copy", { y: 18, opacity: 0, duration: 0.55 }, 0.8)
         .from(".rd-axis", { drawSVG: "0%", duration: 1.3, ease: "power2.inOut" }, 0.25)
         .from(".rd-dot", { scale: 0, opacity: 0, transformOrigin: "center", duration: 0.55, stagger: 0.018, ease: "back.out(2)" }, 0.55)
-        .from(".rd-card", { y: 28, opacity: 0, duration: 0.55, stagger: 0.12 }, 0.9)
-        .from(".res-photo", { opacity: 0, scale: 0.96, transformOrigin: "center", duration: 0.7 }, 0.2);
+        .from(".rd-card", { y: 28, opacity: 0, duration: 0.55, stagger: 0.12 }, 0.9);
 
       gsap.to(".rd-scan", {
         x: 410,
@@ -91,12 +88,6 @@ export default function ResultatsDiscussionSlide({ active }: SlideProps) {
       </section>
 
       <section className="relative grid place-items-center px-14">
-        <DuotonePhoto
-          src={nurseTablet}
-          alt="Infirmière consultant une tablette"
-          position="top"
-          className="res-photo absolute right-8 top-10 h-28 w-44 rounded-2xl ring-1 ring-hair/50 shadow-[0_28px_90px_rgba(27,29,36,0.16)]"
-        />
         <div className="relative h-[560px] w-[620px]">
           <svg viewBox="0 0 620 560" className="absolute inset-0 h-full w-full overflow-visible" aria-hidden>
             <defs>
