@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import type { FormEvent } from "react";
+import type { SubmitEvent } from "react";
 import { gsap, SplitText, useGSAP } from "@/deck/gsap";
 import type { SlideProps } from "@/deck/types";
 import {
@@ -47,7 +47,7 @@ export default function ChatbotSlide({ active }: SlideProps) {
     if (el) el.scrollTop = el.scrollHeight;
   }, [messages]);
 
-  async function handleSubmit(event: FormEvent) {
+  async function handleSubmit(event: SubmitEvent<HTMLFormElement>) {
     event.preventDefault();
     const text = input.trim();
     if (!text || loading) return;
