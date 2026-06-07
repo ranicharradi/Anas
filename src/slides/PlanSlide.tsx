@@ -16,18 +16,19 @@ interface Step {
   n: string;
   /** Label split into manual lines (SVG text doesn't wrap). */
   lines: string[];
-  icon: "search" | "clipboard" | "chart" | "thumb" | "shield";
+  icon: "search" | "clipboard" | "chart" | "thumb" | "chat" | "shield";
   x: number;
   y: number;
 }
 
 // Evenly spaced across the viewBox, alternating above/below the centre line.
 const STEPS: Step[] = [
-  { n: "01", lines: ["Introduction"], icon: "search", x: 140, y: 190 },
-  { n: "02", lines: ["Méthodologie"], icon: "clipboard", x: 380, y: 330 },
-  { n: "03", lines: ["Résultat et", "discussion"], icon: "chart", x: 620, y: 190 },
-  { n: "04", lines: ["Recommandation"], icon: "thumb", x: 860, y: 330 },
-  { n: "05", lines: ["Conclusion"], icon: "shield", x: 1100, y: 190 },
+  { n: "01", lines: ["Introduction"], icon: "search", x: 100, y: 190 },
+  { n: "02", lines: ["Méthodologie"], icon: "clipboard", x: 300, y: 330 },
+  { n: "03", lines: ["Résultat et", "discussion"], icon: "chart", x: 500, y: 190 },
+  { n: "04", lines: ["Recommandations"], icon: "thumb", x: 700, y: 330 },
+  { n: "05", lines: ["Assistant IST"], icon: "chat", x: 900, y: 190 },
+  { n: "06", lines: ["Conclusion"], icon: "shield", x: 1100, y: 330 },
 ];
 
 // Smooth cubic wave threaded through every node centre.
@@ -230,6 +231,15 @@ function Icon({ name }: { name: Step["icon"] }) {
         <>
           <path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3z" />
           <path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3" />
+        </>
+      );
+    case "chat":
+      return (
+        <>
+          <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8z" />
+          <line x1={8.5} y1={11.5} x2={8.5} y2={11.5} />
+          <line x1={12} y1={11.5} x2={12} y2={11.5} />
+          <line x1={15.5} y1={11.5} x2={15.5} y2={11.5} />
         </>
       );
     case "shield":

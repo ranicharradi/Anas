@@ -4,8 +4,18 @@ import type { SlideProps } from "@/deck/types";
 import { DuotonePhoto } from "@/components/DuotonePhoto";
 import nurseCare from "@/assets/photos/nurse-care.jpg";
 
-const STRENGTHS = ["Écoute active", "Respect", "Absence de jugement", "Confidentialité"];
-const GAPS = ["Empathie", "Langage adapté", "Disponibilité"];
+// Real study values from the Canva deck (page "Facteurs favorisant une
+// communication efficace"). Teal = bases solides, coral = lacunes à renforcer.
+const FACTORS = [
+  { label: "Écoute active", value: 100, strong: true },
+  { label: "Respect et absence de jugement", value: 86, strong: true },
+  { label: "Confidentialité", value: 64, strong: true },
+  { label: "Empathie", value: 50, strong: false },
+  { label: "Langage adapté et disponibilité", value: 40, strong: false },
+];
+
+const CLINIC_FILL = "linear-gradient(90deg, var(--color-clinic-deep), #1a93ac)";
+const CORAL_FILL = "linear-gradient(90deg, var(--color-coral), #e07c70)";
 
 export default function CommunicationSlide({ active }: SlideProps) {
   const root = useRef<HTMLDivElement>(null);
@@ -19,16 +29,36 @@ export default function CommunicationSlide({ active }: SlideProps) {
         linesClass: "split-line",
       });
 
-      gsap
+      const tl = gsap
         .timeline({ defaults: { ease: "power3.out" } })
         .from(".cm-kicker", { y: 14, opacity: 0, duration: 0.5 })
         .from(split.words, { yPercent: 120, duration: 0.72, stagger: 0.05 }, 0)
         .from(".cm-sub", { y: 18, opacity: 0, duration: 0.55 }, 0.18)
+        .from(".comm-photo", { opacity: 0, scale: 0.96, transformOrigin: "center", duration: 0.7 }, 0.22)
         .from(".cm-board", { opacity: 0, y: 30, duration: 0.65 }, 0.28)
         .from(".cm-art", { opacity: 0, scale: 0.92, transformOrigin: "center", duration: 0.8, stagger: 0.14, ease: "power2.out" }, 0.4)
-        .from(".cm-chip", { y: 22, opacity: 0, duration: 0.42, stagger: 0.06 }, 0.78)
-        .from(".cm-gap", { x: 34, opacity: 0, duration: 0.46, stagger: 0.08 }, 0.9)
-        .from(".comm-photo", { opacity: 0, scale: 0.96, transformOrigin: "center", duration: 0.7 }, 0.22);
+        .from(".cm-eyebrow", { opacity: 0, y: 10, duration: 0.45 }, 0.5)
+        .from(".cm-row", { x: 28, opacity: 0, duration: 0.5, stagger: 0.09 }, 0.56)
+        .from(".cm-bar", { scaleX: 0, transformOrigin: "left", duration: 0.9, stagger: 0.09, ease: "power3.out" }, 0.62)
+        .from(".cm-cap", { opacity: 0, y: 12, duration: 0.5 }, 1);
+
+      root.current?.querySelectorAll<HTMLElement>(".cm-count").forEach((node) => {
+        const target = Number(node.dataset.to);
+        const counter = { v: 0 };
+        tl.to(
+          counter,
+          {
+            v: target,
+            duration: 0.9,
+            ease: "power2.out",
+            snap: { v: 1 },
+            onUpdate: () => {
+              node.textContent = `${Math.round(counter.v)}%`;
+            },
+          },
+          0.62,
+        );
+      });
 
       return () => split.revert();
     },
@@ -54,7 +84,7 @@ export default function CommunicationSlide({ active }: SlideProps) {
         />
       </section>
 
-      <section className="cm-board relative min-h-[610px] overflow-hidden rounded-lg border border-hair/60 bg-white/55 p-8 shadow-[0_28px_90px_rgba(27,29,36,0.12)] backdrop-blur-sm">
+      <section className="cm-board relative min-h-[610px] overflow-hidden rounded-lg border border-hair/60 bg-white/55 p-9 shadow-[0_28px_90px_rgba(27,29,36,0.12)] backdrop-blur-sm">
         <svg viewBox="0 0 660 560" className="pointer-events-none absolute inset-0 h-full w-full" aria-hidden>
           {/* Calm dialogue motif: two speech bubbles (nurse · adolescent) as a faint watermark. */}
           <g fill="none" strokeLinecap="round" opacity="0.1">
@@ -69,32 +99,47 @@ export default function CommunicationSlide({ active }: SlideProps) {
           </g>
         </svg>
 
-        <div className="relative z-10 grid h-full grid-cols-[1fr_0.82fr] gap-6">
-          <div className="flex flex-col justify-end">
-            <p className="mono-label text-clinic">Bases solides</p>
-            <div className="mt-4 grid grid-cols-2 gap-3">
-              {STRENGTHS.map((item) => (
-                <div key={item} className="cm-chip rounded-lg border border-clinic/20 bg-clinic-soft/50 px-4 py-4">
-                  <p className="text-lg font-semibold leading-tight text-clinic-deep">{item}</p>
-                </div>
-              ))}
+        <div className="relative z-10 flex h-full flex-col justify-center">
+          <div className="cm-eyebrow flex items-baseline justify-between">
+            <p className="mono-label text-clinic">Maîtrise des compétences relationnelles</p>
+            <div className="flex items-center gap-4 text-xs font-semibold uppercase tracking-wider">
+              <span className="flex items-center gap-1.5 text-clinic-deep">
+                <span className="h-2.5 w-2.5 rounded-full bg-clinic" /> Bases solides
+              </span>
+              <span className="flex items-center gap-1.5 text-coral">
+                <span className="h-2.5 w-2.5 rounded-full bg-coral" /> À renforcer
+              </span>
             </div>
           </div>
 
-          <div className="flex flex-col justify-center">
-            <p className="mono-label text-coral">Lacunes à renforcer</p>
-            <div className="mt-4 flex flex-col gap-3">
-              {GAPS.map((item) => (
-                <div key={item} className="cm-gap rounded-lg border border-coral/25 bg-white/80 px-5 py-4 shadow-sm">
-                  <p className="text-lg font-semibold text-ink">{item}</p>
+          <div className="mt-8 flex flex-col gap-6">
+            {FACTORS.map((f) => (
+              <div key={f.label} className="cm-row">
+                <div className="flex items-baseline justify-between gap-4">
+                  <span className="text-lg font-semibold text-ink">{f.label}</span>
+                  <span
+                    className="cm-count font-display text-2xl font-medium leading-none"
+                    data-to={f.value}
+                    style={{ color: f.strong ? "var(--color-clinic-deep)" : "var(--color-coral)" }}
+                  >
+                    0%
+                  </span>
                 </div>
-              ))}
-            </div>
-            <p className="cm-gap mt-6 text-[15px] leading-relaxed text-muted">
-              Ces lacunes rejoignent les recommandations de l'UNESCO sur
-              l'adaptation du langage et la disponibilité relationnelle.
-            </p>
+                <div className="mt-2.5 h-2.5 w-full overflow-hidden rounded-full bg-hair/30">
+                  <div
+                    className="cm-bar h-full rounded-full"
+                    style={{ width: `${f.value}%`, background: f.strong ? CLINIC_FILL : CORAL_FILL }}
+                  />
+                </div>
+              </div>
+            ))}
           </div>
+
+          <p className="cm-cap mt-9 max-w-[52ch] text-[15px] leading-relaxed text-muted">
+            L'écoute active, le respect et la confidentialité sont bien maîtrisés.
+            L'empathie et le langage adapté restent à renforcer, conformément aux
+            recommandations de l'UNESCO.
+          </p>
         </div>
       </section>
     </div>

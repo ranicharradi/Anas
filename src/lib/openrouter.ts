@@ -16,10 +16,14 @@ export interface StreamChatResult {
 }
 
 /** Swap this one line to change models (e.g. a paid model, or Nemotron). */
-export const MODEL = "google/gemini-2.0-flash-exp:free";
+export const MODEL = "nvidia/nemotron-3-super-120b-a12b:free";
 
-/** Abort the call after this long so the slide never hangs on stage. */
-export const REQUEST_TIMEOUT_MS = 10_000;
+/**
+ * Abort the call after this long so the slide never hangs on stage. Tokens
+ * stream in progressively, so this is just a ceiling for a dead connection;
+ * 20s lets a full multi-sentence answer finish without truncation.
+ */
+export const REQUEST_TIMEOUT_MS = 20_000;
 
 export const SYSTEM_PROMPT = `Tu es un·e infirmier·ère éducateur·rice spécialisé·e dans la prévention des infections sexuellement transmissibles (IST) chez les adolescents. Réponds toujours en français, de façon bienveillante, claire et adaptée à un public adolescent. Concentre-toi sur la prévention des IST, le dépistage, et la communication entre soignant et adolescent. Si une question sort de ce domaine, ramène poliment la conversation vers ce sujet. Donne des réponses concises, de 2 à 4 phrases.`;
 
@@ -52,6 +56,9 @@ export async function streamChat(
       body: JSON.stringify({
         model: MODEL,
         stream: true,
+        // Nemotron is a reasoning model; skip the thinking pass so replies arrive
+        // in ~4s (full answer) instead of ~30s, comfortably under the timeout.
+        reasoning: { enabled: false },
         messages: [{ role: "system", content: SYSTEM_PROMPT }, ...messages],
       }),
       signal: controller.signal,

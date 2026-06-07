@@ -17,6 +17,7 @@ import ConsequencesSlide from "@/slides/ConsequencesSlide";
 import MotivationSlide from "@/slides/MotivationSlide";
 import CommunicationSlide from "@/slides/CommunicationSlide";
 import PratiquesEducativesSlide from "@/slides/PratiquesEducativesSlide";
+import FormationDifficultesSlide from "@/slides/FormationDifficultesSlide";
 import RecommandationsSlide from "@/slides/RecommandationsSlide";
 import ChatbotSlide from "@/slides/ChatbotSlide";
 import ConclusionSlide from "@/slides/ConclusionSlide";
@@ -134,6 +135,12 @@ export const slides: SlideDef[] = [
     title: "Méthodes éducatives et difficultés",
     act: "Résultats",
     Component: PratiquesEducativesSlide,
+  },
+  {
+    id: "formation-difficultes",
+    title: "Formation et difficultés rencontrées",
+    act: "Résultats",
+    Component: FormationDifficultesSlide,
   },
   {
     id: "recommandations",

@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import type { SubmitEvent } from "react";
 import { gsap, SplitText, useGSAP } from "@/deck/gsap";
 import type { SlideProps } from "@/deck/types";
+import NurseBot3D from "@/components/NurseBot3D";
 import {
   streamChat,
   FALLBACK_ANSWER,
@@ -33,7 +34,7 @@ export default function ChatbotSlide({ active }: SlideProps) {
         .timeline({ defaults: { ease: "power3.out" } })
         .from(".cb-kicker", { y: 14, opacity: 0, duration: 0.5 })
         .from(split.words, { yPercent: 120, duration: 0.72, stagger: 0.05 }, 0)
-        .from(".cb-sub", { y: 18, opacity: 0, duration: 0.55 }, 0.18)
+        .from(".cb-bot", { opacity: 0, scale: 0.92, duration: 0.7 }, 0.2)
         .from(".cb-panel", { opacity: 0, y: 30, duration: 0.65 }, 0.28);
 
       return () => split.revert();
@@ -100,17 +101,14 @@ export default function ChatbotSlide({ active }: SlideProps) {
       ref={root}
       className="grid h-full grid-cols-[0.85fr_1.15fr] items-center gap-14 px-20 py-12"
     >
-      <section>
+      <section className="flex h-[610px] flex-col">
         <p className="cb-kicker mono-label text-clinic">Recommandations · Outil</p>
         <h2 className="cb-title mt-4 max-w-xl font-display text-6xl font-light leading-[1.03] text-ink">
           Un assistant pour l'éducation à la prévention
         </h2>
-        <p className="cb-sub mt-6 max-w-lg text-lg leading-relaxed text-muted">
-          Un agent conversationnel, formé au rôle d'infirmier·ère éducateur·rice,
-          pourrait accompagner les adolescents dans leurs questions sur les IST :
-          à tout moment, sans jugement et en toute confidentialité. Posez-lui une
-          question.
-        </p>
+        <div className="cb-bot relative mt-4 min-h-0 flex-1">
+          <NurseBot3D active={active} />
+        </div>
       </section>
 
       <section className="cb-panel flex h-[610px] flex-col overflow-hidden rounded-lg border border-hair/60 bg-white/55 shadow-[0_28px_90px_rgba(27,29,36,0.12)] backdrop-blur-sm">

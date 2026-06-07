@@ -1,6 +1,11 @@
 import { useRef } from "react";
 import { scaleBand, scaleLinear } from "d3-scale";
-import { donutPaths } from "@/components/chartGeometry";
+import {
+  Pie,
+  PieChart,
+  Sector,
+  type PieSectorShapeProps,
+} from "recharts";
 import { gsap, SplitText, useGSAP } from "@/deck/gsap";
 import type { SlideProps } from "@/deck/types";
 
@@ -44,13 +49,28 @@ function barPath(x: number, y: number, w: number, h: number, radius: number) {
 const PIE_SIZE = 184;
 const PIE_STROKE = 26;
 
+interface DonutDatum {
+  label: string;
+  value: number;
+  color: string;
+}
+
+interface DonutChart {
+  title: string;
+  value: number;
+  label: string;
+  note: string;
+  data: DonutDatum[];
+  legend: DonutDatum[];
+}
+
 const DONUTS = [
   {
     title: "Répartition selon le sexe",
     value: 70,
     label: "féminin",
     note: "Forte prédominance féminine dans l'échantillon.",
-    paths: donutPaths({ data: SEX_DATA, size: PIE_SIZE, stroke: PIE_STROKE, padAngle: 0.03 }),
+    data: SEX_DATA,
     legend: SEX_DATA,
   },
   {
@@ -58,10 +78,20 @@ const DONUTS = [
     value: 80,
     label: "en exercice",
     note: "Une majorité de professionnels en exercice.",
-    paths: donutPaths({ data: STATUS_DATA, size: PIE_SIZE, stroke: PIE_STROKE, padAngle: 0.03 }),
+    data: STATUS_DATA,
     legend: STATUS_DATA,
   },
 ];
+
+function donutSector(data: DonutDatum[]) {
+  return (props: PieSectorShapeProps, index: number) => (
+    <Sector
+      {...props}
+      className="sd-pie"
+      fill={data[index % data.length]?.color ?? "var(--color-clinic)"}
+    />
+  );
+}
 
 export default function SocioDemoSlide({ active }: SlideProps) {
   const root = useRef<HTMLDivElement>(null);
@@ -85,7 +115,6 @@ export default function SocioDemoSlide({ active }: SlideProps) {
         .from(".sd-age-bar", { scaleY: 0, transformOrigin: "bottom", duration: 0.82, stagger: 0.1, ease: "power2.out" }, 0.5)
         .from(".sd-age-val", { y: 14, opacity: 0, duration: 0.45, stagger: 0.1 }, 0.74)
         .from(".sd-divider", { scaleX: 0, transformOrigin: "left", duration: 0.6 }, 0.8)
-        .from(".sd-pie", { scale: 0.78, opacity: 0, transformOrigin: "center center", duration: 0.65, stagger: 0.09, ease: "back.out(1.7)" }, 0.86)
         .from(".sd-donut-card", { y: 24, opacity: 0, duration: 0.55, stagger: 0.12 }, 0.9)
         .from(".sd-legend", { y: 8, opacity: 0, duration: 0.35, stagger: 0.05 }, 1.1);
 
@@ -195,29 +224,44 @@ export default function SocioDemoSlide({ active }: SlideProps) {
         <div className="sd-divider mt-6 h-px w-full bg-hair/60" />
 
         <div className="mt-6 grid grid-cols-2 gap-x-10">
-          {DONUTS.map((chart) => (
+          {DONUTS.map((chart: DonutChart) => (
             <article key={chart.title} className="sd-donut-card flex flex-col items-center text-center">
               <p className="mono-label text-clinic">{chart.title}</p>
 
-              <svg
-                width={PIE_SIZE}
-                height={PIE_SIZE}
-                viewBox={`0 0 ${PIE_SIZE} ${PIE_SIZE}`}
-                className="mt-3"
+              <div
+                className="relative mt-3"
+                style={{ width: PIE_SIZE, height: PIE_SIZE }}
+                role="img"
                 aria-label={chart.title}
               >
-                <g transform={`translate(${PIE_SIZE / 2} ${PIE_SIZE / 2})`}>
-                  {chart.paths.map((segment) => (
-                    <path key={segment.label} className="sd-pie" d={segment.path} fill={segment.color} />
-                  ))}
-                </g>
-                <text x={PIE_SIZE / 2} y={PIE_SIZE / 2 - 2} textAnchor="middle" fontSize="40" fontWeight={300} fontFamily="var(--font-display)" fill="var(--color-ink)">
-                  <tspan className="sd-count" data-to={chart.value}>0</tspan>%
-                </text>
-                <text x={PIE_SIZE / 2} y={PIE_SIZE / 2 + 22} textAnchor="middle" fontSize="12" fontWeight={700} fill="var(--color-muted)">
-                  {chart.label}
-                </text>
-              </svg>
+                {active ? (
+                  <PieChart width={PIE_SIZE} height={PIE_SIZE}>
+                    <Pie
+                      data={chart.data}
+                      dataKey="value"
+                      nameKey="label"
+                      innerRadius={PIE_SIZE / 2 - PIE_STROKE}
+                      outerRadius={PIE_SIZE / 2}
+                      paddingAngle={3}
+                      startAngle={90}
+                      endAngle={-270}
+                      stroke="var(--color-paper)"
+                      strokeWidth={4}
+                      isAnimationActive
+                      animationDuration={850}
+                      shape={donutSector(chart.data)}
+                    />
+                  </PieChart>
+                ) : null}
+                <div className="pointer-events-none absolute inset-0 grid place-items-center">
+                  <div>
+                    <p className="font-display text-[40px] font-light leading-none text-ink">
+                      <span className="sd-count" data-to={chart.value}>0</span>%
+                    </p>
+                    <p className="mt-2 text-xs font-bold text-muted">{chart.label}</p>
+                  </div>
+                </div>
+              </div>
 
               <p className="mt-3 max-w-[15rem] text-sm leading-relaxed text-muted">{chart.note}</p>
 

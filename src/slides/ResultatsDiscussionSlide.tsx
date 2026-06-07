@@ -126,21 +126,29 @@ export default function ResultatsDiscussionSlide({ active }: SlideProps) {
             ))}
           </svg>
 
-          <div className="rd-card absolute left-2 top-8 rounded-lg border border-hair/60 bg-white/70 px-5 py-4 shadow-xl backdrop-blur-sm">
+          <div className="rd-card absolute left-2 top-8 max-w-[15rem] rounded-lg border border-hair/60 bg-white/70 px-5 py-4 shadow-xl backdrop-blur-sm">
             <p className="mono-label text-clinic">Axe 01</p>
-            <p className="mt-1 text-lg font-semibold text-ink">Profil</p>
+            <p className="mt-1 text-lg font-semibold leading-snug text-ink">
+              Caractéristiques socio-démographiques
+            </p>
           </div>
-          <div className="rd-card absolute right-10 top-36 rounded-lg border border-hair/60 bg-white/70 px-5 py-4 shadow-xl backdrop-blur-sm">
+          <div className="rd-card absolute right-10 top-36 max-w-[15rem] rounded-lg border border-hair/60 bg-white/70 px-5 py-4 shadow-xl backdrop-blur-sm">
             <p className="mono-label text-clinic">Axe 02</p>
-            <p className="mt-1 text-lg font-semibold text-ink">Connaissances</p>
+            <p className="mt-1 text-lg font-semibold leading-snug text-ink">
+              Connaissances relatives aux IST
+            </p>
           </div>
-          <div className="rd-card absolute bottom-24 left-20 rounded-lg border border-hair/60 bg-white/70 px-5 py-4 shadow-xl backdrop-blur-sm">
+          <div className="rd-card absolute bottom-24 left-20 max-w-[15rem] rounded-lg border border-hair/60 bg-white/70 px-5 py-4 shadow-xl backdrop-blur-sm">
             <p className="mono-label text-clinic">Axe 03</p>
-            <p className="mt-1 text-lg font-semibold text-ink">Attitudes</p>
+            <p className="mt-1 text-lg font-semibold leading-snug text-ink">
+              Attitude des professionnels
+            </p>
           </div>
-          <div className="rd-card absolute bottom-12 right-2 rounded-lg border border-hair/60 bg-white/70 px-5 py-4 shadow-xl backdrop-blur-sm">
+          <div className="rd-card absolute bottom-12 right-2 max-w-[15rem] rounded-lg border border-hair/60 bg-white/70 px-5 py-4 shadow-xl backdrop-blur-sm">
             <p className="mono-label text-clinic">Axe 04</p>
-            <p className="mt-1 text-lg font-semibold text-ink">Pratiques</p>
+            <p className="mt-1 text-lg font-semibold leading-snug text-ink">
+              Pratiques éducatives
+            </p>
           </div>
         </div>
       </section>

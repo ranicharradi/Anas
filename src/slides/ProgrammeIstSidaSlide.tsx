@@ -3,13 +3,13 @@ import {
   Bar,
   BarChart,
   CartesianGrid,
-  Cell,
   LabelList,
   Pie,
   PieChart,
-  ResponsiveContainer,
+  Sector,
   XAxis,
   YAxis,
+  type PieSectorShapeProps,
 } from "recharts";
 import { gsap, SplitText, useGSAP } from "@/deck/gsap";
 import type { SlideProps } from "@/deck/types";
@@ -29,6 +29,15 @@ const AWARENESS_DATA = [
 
 function percentLabel(value: unknown) {
   return `${value}%`;
+}
+
+function awarenessSector(props: PieSectorShapeProps, index: number) {
+  return (
+    <Sector
+      {...props}
+      fill={AWARENESS_DATA[index % AWARENESS_DATA.length]?.color ?? "var(--color-clinic)"}
+    />
+  );
 }
 
 export default function ProgrammeIstSidaSlide({ active }: SlideProps) {
@@ -119,59 +128,60 @@ export default function ProgrammeIstSidaSlide({ active }: SlideProps) {
 
         <div className="pis-chart mt-5 h-[290px] w-full" role="img" aria-label="Répartition des répondants selon le milieu d'exercice">
           {active ? (
-            <ResponsiveContainer width="100%" height="100%">
-              <BarChart
-                data={SERVICE_DATA}
-                layout="vertical"
-                margin={{ top: 18, right: 54, bottom: 18, left: 12 }}
+            <BarChart
+              width={690}
+              height={290}
+              data={SERVICE_DATA}
+              layout="vertical"
+              margin={{ top: 18, right: 54, bottom: 18, left: 12 }}
+              style={{ width: "100%", height: "100%" }}
+            >
+              <defs>
+                <linearGradient id="pisBarGradient" x1="0" x2="1" y1="0" y2="0">
+                  <stop offset="0%" stopColor="var(--color-clinic)" stopOpacity="0.52" />
+                  <stop offset="100%" stopColor="var(--color-clinic)" stopOpacity="0.96" />
+                </linearGradient>
+              </defs>
+              <CartesianGrid
+                horizontal={false}
+                stroke="var(--color-hair)"
+                strokeDasharray="2 7"
+                strokeOpacity={0.48}
+              />
+              <XAxis
+                type="number"
+                domain={[0, 60]}
+                ticks={[0, 20, 40, 60]}
+                axisLine={false}
+                tickLine={false}
+                tick={{ fill: "var(--color-muted)", fontSize: 12 }}
+              />
+              <YAxis
+                dataKey="label"
+                type="category"
+                width={132}
+                axisLine={false}
+                tickLine={false}
+                tick={{ fill: "var(--color-muted)", fontSize: 15, fontWeight: 700 }}
+              />
+              <Bar
+                dataKey="value"
+                barSize={24}
+                radius={[0, 9, 9, 0]}
+                fill="url(#pisBarGradient)"
+                isAnimationActive
+                animationDuration={900}
               >
-                <defs>
-                  <linearGradient id="pisBarGradient" x1="0" x2="1" y1="0" y2="0">
-                    <stop offset="0%" stopColor="var(--color-clinic)" stopOpacity="0.52" />
-                    <stop offset="100%" stopColor="var(--color-clinic)" stopOpacity="0.96" />
-                  </linearGradient>
-                </defs>
-                <CartesianGrid
-                  horizontal={false}
-                  stroke="var(--color-hair)"
-                  strokeDasharray="2 7"
-                  strokeOpacity={0.48}
-                />
-                <XAxis
-                  type="number"
-                  domain={[0, 60]}
-                  ticks={[0, 20, 40, 60]}
-                  axisLine={false}
-                  tickLine={false}
-                  tick={{ fill: "var(--color-muted)", fontSize: 12 }}
-                />
-                <YAxis
-                  dataKey="label"
-                  type="category"
-                  width={132}
-                  axisLine={false}
-                  tickLine={false}
-                  tick={{ fill: "var(--color-muted)", fontSize: 15, fontWeight: 700 }}
-                />
-                <Bar
+                <LabelList
                   dataKey="value"
-                  barSize={24}
-                  radius={[0, 9, 9, 0]}
-                  fill="url(#pisBarGradient)"
-                  isAnimationActive
-                  animationDuration={900}
-                >
-                  <LabelList
-                    dataKey="value"
-                    position="right"
-                    formatter={percentLabel}
-                    fill="var(--color-clinic-deep)"
-                    fontSize={14}
-                    fontWeight={700}
-                  />
-                </Bar>
-              </BarChart>
-            </ResponsiveContainer>
+                  position="right"
+                  formatter={percentLabel}
+                  fill="var(--color-clinic-deep)"
+                  fontSize={14}
+                  fontWeight={700}
+                />
+              </Bar>
+            </BarChart>
           ) : null}
         </div>
 
@@ -182,28 +192,23 @@ export default function ProgrammeIstSidaSlide({ active }: SlideProps) {
             <p className="mono-label text-clinic">Connaissance du programme</p>
             <div className="pis-chart relative mt-4 h-[230px] w-[230px]" role="img" aria-label="Connaissance du programme national IST-Sida">
               {active ? (
-                <ResponsiveContainer width="100%" height="100%">
-                  <PieChart>
-                    <Pie
-                      data={AWARENESS_DATA}
-                      dataKey="value"
-                      nameKey="label"
-                      innerRadius={70}
-                      outerRadius={106}
-                      paddingAngle={3}
-                      startAngle={90}
-                      endAngle={-270}
-                      stroke="var(--color-paper)"
-                      strokeWidth={6}
-                      isAnimationActive
-                      animationDuration={900}
-                    >
-                      {AWARENESS_DATA.map((item) => (
-                        <Cell key={item.label} fill={item.color} />
-                      ))}
-                    </Pie>
-                  </PieChart>
-                </ResponsiveContainer>
+                <PieChart width={230} height={230}>
+                  <Pie
+                    data={AWARENESS_DATA}
+                    dataKey="value"
+                    nameKey="label"
+                    innerRadius={70}
+                    outerRadius={106}
+                    paddingAngle={3}
+                    startAngle={90}
+                    endAngle={-270}
+                    stroke="var(--color-paper)"
+                    strokeWidth={6}
+                    isAnimationActive
+                    animationDuration={900}
+                    shape={awarenessSector}
+                  />
+                </PieChart>
               ) : null}
               <div className="pointer-events-none absolute inset-0 grid place-items-center">
                 <div>
