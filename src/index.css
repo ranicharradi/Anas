@@ -44,8 +44,8 @@ body {
 /* Mono small-caps figure/label chrome used across slides. */
 .mono-label {
   font-family: var(--font-sans);
-  font-size: 12px;
-  letter-spacing: 0.22em;
+  font-size: 13px;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
   font-feature-settings: "tnum" 1;
 }

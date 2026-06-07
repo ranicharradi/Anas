@@ -72,7 +72,7 @@ export default function CommunicationSlide({ active }: SlideProps) {
         <h2 className="cm-title mt-4 max-w-xl font-display text-6xl font-light leading-[1.03] text-ink">
           Facteurs favorisant une communication efficace
         </h2>
-        <p className="cm-sub mt-6 max-w-lg text-lg leading-relaxed text-muted">
+        <p className="cm-sub mt-6 max-w-lg text-xl leading-relaxed text-muted">
           Les bases relationnelles sont présentes, mais certaines compétences
           restent à renforcer pour mieux dialoguer avec les adolescents.
         </p>
@@ -135,7 +135,7 @@ export default function CommunicationSlide({ active }: SlideProps) {
             ))}
           </div>
 
-          <p className="cm-cap mt-9 max-w-[52ch] text-[15px] leading-relaxed text-muted">
+          <p className="cm-cap mt-9 max-w-[52ch] text-[17px] leading-relaxed text-muted">
             L'écoute active, le respect et la confidentialité sont bien maîtrisés.
             L'empathie et le langage adapté restent à renforcer, conformément aux
             recommandations de l'UNESCO.

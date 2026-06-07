@@ -126,7 +126,7 @@ export default function KnowledgeOverviewSlide({ active }: SlideProps) {
         <h2 className="ko-title mt-4 max-w-xl font-display text-5xl font-light leading-[1.04] text-ink">
           Connaissance des modes de transmission des IST
         </h2>
-        <p className="ko-sub mt-5 max-w-lg text-lg leading-relaxed text-muted">
+        <p className="ko-sub mt-5 max-w-lg text-xl leading-relaxed text-muted">
           Le niveau global reste moyen, avec une bonne identification des
           rapports sexuels et une forte méconnaissance du contact indirect.
         </p>
@@ -214,7 +214,7 @@ export default function KnowledgeOverviewSlide({ active }: SlideProps) {
 
         <div className="ko-note mt-5 flex gap-4">
           <span className="mt-1 w-1 shrink-0 rounded-full bg-coral" />
-          <p className="text-base leading-relaxed text-muted">
+          <p className="text-lg leading-relaxed text-muted">
             Constat discuté : les risques liés aux rapports sexuels sont bien
             reconnus, alors que le contact indirect reste très peu identifié
             comme mode de transmission.

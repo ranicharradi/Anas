@@ -89,11 +89,11 @@ export default function ProgrammeIstSidaSlide({ active }: SlideProps) {
   return (
     <div ref={root} className="grid h-full grid-cols-[0.78fr_1.22fr] items-center gap-12 px-20 py-12">
       <section>
-        <p className="pis-kicker mono-label text-clinic">Résultats · Page 14</p>
+        <p className="pis-kicker mono-label text-clinic">Résultats · Milieu d'exercice</p>
         <h2 className="pis-title mt-4 max-w-xl font-display text-5xl font-light leading-[1.04] text-ink">
           Milieu d'exercice et programme national IST-Sida
         </h2>
-        <p className="pis-sub mt-6 max-w-lg text-lg leading-relaxed text-muted">
+        <p className="pis-sub mt-6 max-w-lg text-xl leading-relaxed text-muted">
           Le milieu d'exercice est varié. Ce résultat rejoint les rapports de
           l'Organisation mondiale de la Santé, qui préconisent une intégration
           plus forte de l'éducation aux IST dans tous les services de soins
@@ -230,7 +230,7 @@ export default function ProgrammeIstSidaSlide({ active }: SlideProps) {
           </div>
 
           <div className="pis-note rounded-lg border border-hair/60 bg-paper/70 p-6">
-            <p className="text-base leading-relaxed text-muted">
+            <p className="text-lg leading-relaxed text-muted">
               <strong className="font-semibold text-ink">54 % déclarent connaître le programme national IST-Sida.</strong>{" "}
               Ce résultat reste préoccupant et souligne la nécessité de renforcer
               la formation continue ainsi que la sensibilisation des infirmiers

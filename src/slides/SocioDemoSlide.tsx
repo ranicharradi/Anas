@@ -144,11 +144,11 @@ export default function SocioDemoSlide({ active }: SlideProps) {
   return (
     <div ref={root} className="grid h-full grid-cols-[0.76fr_1.24fr] items-center gap-12 px-20 py-12">
       <section>
-        <p className="sd-kicker mono-label text-clinic">Résultats · Page 13</p>
+        <p className="sd-kicker mono-label text-clinic">Résultats · Échantillon</p>
         <h2 className="sd-title mt-4 max-w-xl font-display text-6xl font-light leading-[1.03] text-ink">
           Caractéristiques sociodémographiques
         </h2>
-        <p className="sd-sub mt-6 max-w-lg text-lg leading-relaxed text-muted">
+        <p className="sd-sub mt-6 max-w-lg text-xl leading-relaxed text-muted">
           L'analyse révèle un profil majoritairement jeune, une forte
           prédominance féminine et une majorité de professionnels en exercice.
         </p>

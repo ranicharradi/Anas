@@ -70,7 +70,7 @@ export default function PratiquesEducativesSlide({ active }: SlideProps) {
         <h2 className="pe-title mt-4 max-w-xl font-display text-6xl font-light leading-[1.03] text-ink">
           Face à la réticence, quelles méthodes ?
         </h2>
-        <p className="pe-sub mt-6 max-w-lg text-lg leading-relaxed text-muted">
+        <p className="pe-sub mt-6 max-w-lg text-xl leading-relaxed text-muted">
           Devant la réticence des adolescents, les infirmiers privilégient une
           communication progressive, mais l'approche traditionnelle reste
           dominante.

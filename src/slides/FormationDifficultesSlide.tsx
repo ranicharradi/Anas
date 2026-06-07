@@ -68,7 +68,7 @@ export default function FormationDifficultesSlide({ active }: SlideProps) {
         <h2 className="fd-title mt-4 max-w-xl font-display text-6xl font-light leading-[1.03] text-ink">
           Formation et difficultés rencontrées
         </h2>
-        <p className="fd-sub mt-6 max-w-lg text-lg leading-relaxed text-muted">
+        <p className="fd-sub mt-6 max-w-lg text-xl leading-relaxed text-muted">
           Le déficit de formation au programme national IST-Sida est le frein
           majeur des pratiques éducatives infirmières.
         </p>
@@ -87,7 +87,7 @@ export default function FormationDifficultesSlide({ active }: SlideProps) {
               size={230}
             />
           </div>
-          <p className="fd-note text-[15px] leading-relaxed text-muted">
+          <p className="fd-note text-[17px] leading-relaxed text-muted">
             Seuls 24 % des infirmiers ont bénéficié d'une telle formation : un
             déficit significatif dans la mise en place de formations spécifiques.
           </p>

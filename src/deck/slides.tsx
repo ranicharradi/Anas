@@ -21,6 +21,7 @@ import FormationDifficultesSlide from "@/slides/FormationDifficultesSlide";
 import RecommandationsSlide from "@/slides/RecommandationsSlide";
 import ChatbotSlide from "@/slides/ChatbotSlide";
 import ConclusionSlide from "@/slides/ConclusionSlide";
+import RemerciementsSlide from "@/slides/RemerciementsSlide";
 
 /**
  * The ordered slide registry. Adding a slide is one entry here. This scaffold
@@ -159,5 +160,12 @@ export const slides: SlideDef[] = [
     title: "Conclusion",
     act: "Conclusion",
     Component: ConclusionSlide,
+  },
+  {
+    id: "remerciements",
+    title: "Remerciements",
+    act: "Conclusion",
+    tone: "dark",
+    Component: RemerciementsSlide,
   },
 ];

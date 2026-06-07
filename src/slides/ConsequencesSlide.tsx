@@ -206,7 +206,7 @@ export default function ConsequencesSlide({ active }: SlideProps) {
             })}
           </svg>
 
-          <p className="cs-cap mt-1 max-w-[46ch] text-[15px] leading-relaxed text-muted">
+          <p className="cs-cap mt-1 max-w-[46ch] text-[17px] leading-relaxed text-muted">
             80 % de transmission au partenaire confirment la forte contagiosité,
             en cohérence avec l'OMS : plus d'un million de nouvelles infections
             par jour.
@@ -254,7 +254,7 @@ export default function ConsequencesSlide({ active }: SlideProps) {
             </svg>
           </div>
 
-          <p className="cs-cap text-[15px] leading-relaxed text-muted">
+          <p className="cs-cap text-[17px] leading-relaxed text-muted">
             80 % des participants reconnaissent la transmission mère-enfant ;
             conforme à l'OMS sur les risques graves pour le nouveau-né pendant la
             grossesse.

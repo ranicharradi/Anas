@@ -74,7 +74,7 @@ export default function MotivationSlide({ active }: SlideProps) {
         <h2 className="mot-title mt-4 max-w-xl font-display text-5xl font-light leading-[1.04] text-ink">
           Motivation et perception du rôle
         </h2>
-        <p className="mot-sub mt-5 max-w-lg text-lg leading-relaxed text-muted">
+        <p className="mot-sub mt-5 max-w-lg text-xl leading-relaxed text-muted">
           Les infirmiers se montrent impliqués dans la santé sexuelle des adolescents
           et conscients de leurs limites actuelles.
         </p>

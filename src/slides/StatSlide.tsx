@@ -59,7 +59,7 @@ export default function StatSlide({ active }: SlideProps) {
         <h2 className="headline mt-5 max-w-xl font-display text-6xl font-light leading-[1.04]">
           Identification des signes cliniques des IST
         </h2>
-        <p className="reveal mt-7 max-w-lg text-lg leading-relaxed text-muted">
+        <p className="reveal mt-7 max-w-lg text-xl leading-relaxed text-muted">
           Les professionnels reconnaissent plus facilement les signes évidents
           que les symptômes atypiques — un constat conforme aux données du CDC.
         </p>

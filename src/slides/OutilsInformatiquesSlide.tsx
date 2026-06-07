@@ -101,7 +101,7 @@ export default function OutilsInformatiquesSlide({ active }: SlideProps) {
         <h2 className="tools-title mt-3 max-w-lg font-display text-6xl font-light leading-[1.04] text-ink">
           Outils informatiques
         </h2>
-        <p className="tools-sub mt-5 max-w-lg text-[19px] leading-relaxed text-muted">
+        <p className="tools-sub mt-5 max-w-lg text-[20px] leading-relaxed text-muted">
           Les données ont été préparées, analysées, rédigées puis présentées avec
           quatre outils complémentaires.
         </p>
@@ -154,7 +154,7 @@ export default function OutilsInformatiquesSlide({ active }: SlideProps) {
         <div className="relative z-10 flex items-center justify-between">
           <div>
             <p className="mono-label text-clinic">Collecte · Traitement · Présentation</p>
-            <p className="mt-2 max-w-lg text-base leading-relaxed text-muted">
+            <p className="mt-2 max-w-lg text-lg leading-relaxed text-muted">
               De la base de données au support de soutenance.
             </p>
           </div>
@@ -182,10 +182,10 @@ export default function OutilsInformatiquesSlide({ active }: SlideProps) {
 
               <div className="mt-5">
                 <h3 className="text-[22px] font-semibold leading-tight text-ink">{tool.name}</h3>
-                <p className="mt-1 text-[15px] font-semibold" style={{ color: tool.color }}>
+                <p className="mt-1 text-[17px] font-semibold" style={{ color: tool.color }}>
                   {tool.role}
                 </p>
-                <p className="mt-3 text-[15px] leading-relaxed text-muted">{tool.detail}</p>
+                <p className="mt-3 text-[17px] leading-relaxed text-muted">{tool.detail}</p>
               </div>
             </article>
           ))}

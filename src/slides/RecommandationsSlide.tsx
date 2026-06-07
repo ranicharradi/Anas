@@ -83,7 +83,7 @@ export default function RecommandationsSlide({ active }: SlideProps) {
         <h2 className="reco-title mt-3 font-display text-6xl font-light text-ink">
           Pistes d'amélioration
         </h2>
-        <p className="reco-lead mt-3 text-lg leading-relaxed text-muted">
+        <p className="reco-lead mt-3 text-xl leading-relaxed text-muted">
           Six recommandations issues de l'analyse, à l'intention des équipes soignantes et des décideurs.
         </p>
       </div>
@@ -104,7 +104,7 @@ export default function RecommandationsSlide({ active }: SlideProps) {
             </span>
 
             {/* Text */}
-            <p className="text-[15px] leading-relaxed text-ink">{r.text}</p>
+            <p className="text-[17px] leading-relaxed text-ink">{r.text}</p>
           </article>
         ))}
       </div>

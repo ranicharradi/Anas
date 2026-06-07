@@ -147,7 +147,7 @@ export default function EtudeSlide({ active }: SlideProps) {
           ))}
         </div>
 
-        <p className="etude-reveal mt-7 max-w-lg text-lg leading-relaxed text-muted">
+        <p className="etude-reveal mt-7 max-w-lg text-xl leading-relaxed text-muted">
           Une enquête menée sur une période de{" "}
           <strong className="font-semibold text-ink">4 semaines</strong>, du
           18 février au 17 mars 2026.

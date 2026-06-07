@@ -58,8 +58,7 @@ export default function ConclusionSlide({ active }: SlideProps) {
           ".concl-pillar",
           { y: 28, opacity: 0, duration: 0.55, stagger: 0.12, ease: "power2.out" },
           0.58,
-        )
-        .from(".concl-sign", { y: 12, opacity: 0, duration: 0.5 }, 0.9);
+        );
 
       return () => split.revert();
     },
@@ -86,7 +85,7 @@ export default function ConclusionSlide({ active }: SlideProps) {
 
       {/* Narrative + closing photo */}
       <div className="grid grid-cols-[1.3fr_0.7fr] items-center gap-10">
-        <p className="concl-narrative text-[19px] leading-relaxed text-ink/85">
+        <p className="concl-narrative text-[20px] leading-relaxed text-ink/85">
           Les IST constituent un{" "}
           <strong className="font-semibold text-ink">
             problème majeur de santé publique
@@ -133,7 +132,7 @@ export default function ConclusionSlide({ active }: SlideProps) {
               >
                 {p.label}
               </h3>
-              <p className="mt-3 text-[15px] leading-relaxed text-muted">
+              <p className="mt-3 text-[17px] leading-relaxed text-muted">
                 {p.gloss}
               </p>
             </div>
@@ -141,10 +140,6 @@ export default function ConclusionSlide({ active }: SlideProps) {
         ))}
       </div>
 
-      {/* Closing line */}
-      <p className="concl-sign mono-label pb-1 text-center text-muted/70">
-        Merci de votre attention.
-      </p>
     </div>
   );
 }

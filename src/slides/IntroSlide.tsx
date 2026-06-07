@@ -167,7 +167,7 @@ export default function IntroSlide({ active }: SlideProps) {
 
         {/* Narrative */}
         <div className="flex flex-col justify-center gap-6">
-          <p className="reveal text-[19px] leading-relaxed text-ink/85">
+          <p className="reveal text-[20px] leading-relaxed text-ink/85">
             Les infections sexuellement transmissibles (IST) constituent un{" "}
             <strong className="font-semibold text-ink">
               problème majeur de santé publique
@@ -177,7 +177,7 @@ export default function IntroSlide({ active }: SlideProps) {
           </p>
 
           <div className="reveal">
-            <p className="text-[19px] leading-relaxed text-ink/85">
+            <p className="text-[20px] leading-relaxed text-ink/85">
               Les infirmiers sont{" "}
               <strong className="font-semibold text-ink">essentiels</strong>{" "}
               dans la lutte contre les IST chez les adolescents, un rôle adapté
@@ -187,7 +187,7 @@ export default function IntroSlide({ active }: SlideProps) {
               {PILIERS.map((p) => (
                 <span
                   key={p}
-                  className="rounded-full border border-clinic/30 bg-clinic-soft/40 px-4 py-1.5 text-[15px] font-medium text-clinic-deep"
+                  className="rounded-full border border-clinic/30 bg-clinic-soft/40 px-4 py-1.5 text-[17px] font-medium text-clinic-deep"
                 >
                   {p}
                 </span>
@@ -313,7 +313,7 @@ function Stat({
           </span>
           <span className="ml-1 text-clinic">{unit}</span>
         </p>
-        <p className="mt-1.5 max-w-[24ch] text-[15px] leading-snug text-muted">
+        <p className="mt-1.5 max-w-[24ch] text-[17px] leading-snug text-muted">
           {caption}
         </p>
       </div>

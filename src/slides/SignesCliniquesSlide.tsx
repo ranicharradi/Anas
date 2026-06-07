@@ -70,7 +70,7 @@ export default function SignesCliniquesSlide({ active }: SlideProps) {
         <h2 className="sc-title mt-4 max-w-xl font-display text-6xl font-light leading-[1.02] text-ink">
           Identification des signes cliniques des IST
         </h2>
-        <p className="sc-sub mt-6 max-w-lg text-lg leading-relaxed text-muted">
+        <p className="sc-sub mt-6 max-w-lg text-xl leading-relaxed text-muted">
           L'écoulement anormal est le signe le plus fréquemment identifié, tandis
           que les douleurs abdominales restent les moins citées.
         </p>
@@ -92,7 +92,16 @@ export default function SignesCliniquesSlide({ active }: SlideProps) {
           role="img"
           aria-label="Diagramme radar de la part des répondants citant chaque signe clinique des IST"
         >
-          <ResponsiveContainer key={active ? "on" : "off"} width="100%" height="100%">
+          {/* initialDimension seeds the first render with positive sizes so the
+              ResizeObserver-backed container never renders at its -1/-1 default
+              (which logs a "width(-1)/height(-1)" warning); the observer then
+              corrects width to the real column size. Height matches h-[360px]. */}
+          <ResponsiveContainer
+            key={active ? "on" : "off"}
+            width="100%"
+            height="100%"
+            initialDimension={{ width: 640, height: 360 }}
+          >
             <RadarChart data={SIGNS} outerRadius="72%" margin={{ top: 24, right: 38, bottom: 16, left: 38 }}>
               <PolarGrid stroke={COLORS.hair} strokeOpacity={0.7} />
               <PolarAngleAxis

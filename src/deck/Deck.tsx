@@ -17,6 +17,9 @@ export default function Deck() {
   const [index, setIndex] = useState(0);
   const [navOpen, setNavOpen] = useState(false);
   const count = slides.length;
+  // Dark slides (e.g. the teal Remerciements) need a light chrome palette so the
+  // counter / progress bar / nav dots stay legible over the dark field.
+  const dark = slides[index].tone === "dark";
 
   const go = useCallback(
     (dir: number) =>
@@ -73,12 +76,35 @@ export default function Deck() {
       })}
 
       {/* Deck chrome */}
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-[3px] bg-hair/40">
+      <div
+        className={`pointer-events-none absolute inset-x-0 top-0 h-[3px] ${
+          dark ? "bg-paper/20" : "bg-hair/40"
+        }`}
+      >
         <div
-          className="h-full bg-clinic transition-[width] duration-500 ease-out"
+          className={`h-full transition-[width] duration-500 ease-out ${
+            dark ? "bg-paper" : "bg-clinic"
+          }`}
           style={{ width: `${((index + 1) / count) * 100}%` }}
         />
       </div>
+
+      {/* Slide counter: decorative chrome (the nav rail carries the labelled
+          version for assistive tech), so it's aria-hidden and never intercepts
+          pointer events meant for the nav. Suppressed on the title/cover slide,
+          whose bottom row is already full (supervisor / year / presenter) and
+          which is conventionally left unnumbered. Numbering still reflects true
+          position elsewhere (slide 2 → "2 / 22"). */}
+      {slides[index].id !== "title" && (
+        <div
+          aria-hidden
+          className={`pointer-events-none absolute bottom-6 right-8 z-10 mono-label ${
+            dark ? "text-paper/70" : "text-muted"
+          }`}
+        >
+          <span className={dark ? "text-paper" : "text-ink"}>{index + 1}</span> / {count}
+        </div>
+      )}
 
       {/* Right-edge slide navigator: a faint dot rail that expands into a
           labeled panel on hover and collapses when the pointer leaves it. */}
@@ -120,8 +146,12 @@ export default function Deck() {
                   <span
                     className={`block shrink-0 rounded-full transition-all duration-300 ${
                       isCurrent
-                        ? "h-2.5 w-2.5 bg-clinic"
-                        : "h-2 w-2 bg-ink/20 group-hover:bg-ink/40"
+                        ? dark
+                          ? "h-2.5 w-2.5 bg-paper"
+                          : "h-2.5 w-2.5 bg-clinic"
+                        : dark
+                          ? "h-2 w-2 bg-paper/30 group-hover:bg-paper/60"
+                          : "h-2 w-2 bg-ink/20 group-hover:bg-ink/40"
                     } ${navOpen ? "opacity-100" : "opacity-50"}`}
                   />
                 </button>

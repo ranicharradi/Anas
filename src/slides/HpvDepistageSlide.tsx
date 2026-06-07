@@ -153,7 +153,7 @@ export default function HpvDepistageSlide({ active }: SlideProps) {
         <h2 className="hpv-title mt-3 font-display text-5xl font-light leading-[1.04] text-ink">
           HPV et indications du dépistage
         </h2>
-        <p className="hpv-sub mt-4 max-w-2xl text-base leading-relaxed text-muted">
+        <p className="hpv-sub mt-4 max-w-2xl text-lg leading-relaxed text-muted">
           Deux repères ressortent fortement : les complications du HPV et la
           nécessité du dépistage chez les personnes à risque.
         </p>

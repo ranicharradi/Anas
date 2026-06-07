@@ -102,7 +102,7 @@ export default function CollecteSlide({ active }: SlideProps) {
         <h2 className="col-title mt-3 max-w-md font-display text-6xl font-light leading-[1.04] text-ink">
           Méthode de collecte des données
         </h2>
-        <p className="col-sub mt-4 max-w-md text-lg leading-relaxed text-muted">
+        <p className="col-sub mt-4 max-w-md text-xl leading-relaxed text-muted">
           Un questionnaire structuré en quatre volets, administré aux infirmiers
           des services ciblés.
         </p>
@@ -141,7 +141,7 @@ export default function CollecteSlide({ active }: SlideProps) {
 
             <div className="min-w-0 flex-1">
               <div className="flex items-baseline justify-between gap-4">
-                <p className="truncate text-[19px] font-semibold text-ink">{v.label}</p>
+                <p className="truncate text-[20px] font-semibold text-ink">{v.label}</p>
                 <p className="shrink-0 text-base font-medium text-muted">
                   <span className="count-up tabular-nums" data-to={v.q}>0</span> questions
                 </p>
