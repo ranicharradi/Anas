@@ -121,7 +121,7 @@ export const slides: SlideDef[] = [
   },
   {
     id: "motivation-formation",
-    title: "Motivation et perception du rôle",
+    title: "Motivation et perception du rôle infirmier",
     act: "Résultats",
     Component: MotivationSlide,
   },

@@ -21,15 +21,23 @@ interface Step {
   y: number;
 }
 
-// Evenly spaced across the viewBox, alternating above/below the centre line.
-const STEPS: Step[] = [
-  { n: "01", lines: ["Introduction"], icon: "search", x: 100, y: 190 },
-  { n: "02", lines: ["Méthodologie"], icon: "clipboard", x: 300, y: 330 },
-  { n: "03", lines: ["Résultat et", "discussion"], icon: "chart", x: 500, y: 190 },
-  { n: "04", lines: ["Recommandations"], icon: "thumb", x: 700, y: 330 },
-  { n: "05", lines: ["Assistant IST"], icon: "chat", x: 900, y: 190 },
-  { n: "06", lines: ["Conclusion"], icon: "shield", x: 1100, y: 330 },
+// Roadmap steps in order. Number and position are derived below so the row
+// stays evenly spaced and correctly numbered however many steps there are.
+const PLAN: Pick<Step, "lines" | "icon">[] = [
+  { lines: ["Introduction"], icon: "search" },
+  { lines: ["Méthodologie"], icon: "clipboard" },
+  { lines: ["Résultat et", "discussion"], icon: "chart" },
+  { lines: ["Recommandations"], icon: "thumb" },
+  { lines: ["Conclusion"], icon: "shield" },
 ];
+
+// Evenly spaced across the viewBox, alternating above/below the centre line.
+const STEPS: Step[] = PLAN.map((s, i) => ({
+  ...s,
+  n: String(i + 1).padStart(2, "0"),
+  x: 100 + (i * (VB.w - 200)) / (PLAN.length - 1),
+  y: i % 2 === 0 ? 190 : 330,
+}));
 
 // Smooth cubic wave threaded through every node centre.
 const ROAD_D = (() => {

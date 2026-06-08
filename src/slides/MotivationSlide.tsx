@@ -72,7 +72,7 @@ export default function MotivationSlide({ active }: SlideProps) {
       <section>
         <p className="mot-kicker mono-label text-clinic">Attitudes des professionnels</p>
         <h2 className="mot-title mt-4 max-w-xl font-display text-5xl font-light leading-[1.04] text-ink">
-          Motivation et perception du rôle
+          Motivation et perception du rôle infirmier
         </h2>
         <p className="mot-sub mt-5 max-w-lg text-xl leading-relaxed text-muted">
           Les infirmiers se montrent impliqués dans la santé sexuelle des adolescents
@@ -81,7 +81,7 @@ export default function MotivationSlide({ active }: SlideProps) {
       </section>
 
       <section className="mot-panel relative flex min-h-[560px] flex-col justify-center rounded-2xl border border-hair/50 bg-white/65 px-9 py-10 shadow-[0_28px_90px_rgba(27,29,36,0.12)] backdrop-blur-sm">
-        <p className="mono-label text-clinic">Attitudes mesurées sur 80 répondants</p>
+        <p className="mono-label text-clinic">Attitudes mesurées sur 50 répondants</p>
         <h3 className="mt-2 font-display text-2xl font-light leading-tight text-ink">
           Engagement et conscience professionnelle
         </h3>
