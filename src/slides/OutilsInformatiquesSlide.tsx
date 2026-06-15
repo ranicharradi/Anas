@@ -2,7 +2,7 @@ import { useRef } from "react";
 import excelLogo from "@/assets/logos/microsoft-excel.svg";
 import wordLogo from "@/assets/logos/microsoft-word.svg";
 import spssLogo from "@/assets/logos/spss.svg";
-import canvaLogo from "@/assets/logos/canva.svg";
+import reactLogo from "@/assets/logos/react.svg";
 import { gsap, SplitText, useGSAP } from "@/deck/gsap";
 import type { SlideProps } from "@/deck/types";
 import { DuotonePhoto } from "@/components/DuotonePhoto";
@@ -44,11 +44,11 @@ const TOOLS: ToolItem[] = [
   },
   {
     n: "04",
-    name: "Canva",
-    role: "Support visuel",
-    detail: "Conception graphique de la présentation.",
-    logo: canvaLogo,
-    color: "#00c4cc",
+    name: "React + GSAP",
+    role: "Application web animée",
+    detail: "Diaporama interactif codé sur mesure, sans gabarit.",
+    logo: reactLogo,
+    color: "#149eca",
   },
 ];
 
