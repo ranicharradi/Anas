@@ -57,7 +57,6 @@ export default function ProgrammeIstSidaSlide({ active }: SlideProps) {
         .from(".pis-kicker", { y: 14, opacity: 0, duration: 0.5 })
         .from(split.words, { yPercent: 120, duration: 0.72, stagger: 0.05 }, 0)
         .from(".pis-sub", { y: 18, opacity: 0, duration: 0.55 }, 0.18)
-        .from(".pis-stat", { y: 26, opacity: 0, duration: 0.58, stagger: 0.12 }, 0.3)
         .from(".pis-panel", { y: 34, opacity: 0, duration: 0.65 }, 0.32)
         .from(".pis-chart", { y: 18, opacity: 0, duration: 0.58, stagger: 0.12 }, 0.48)
         .from(".pis-divider", { scaleX: 0, transformOrigin: "left", duration: 0.55 }, 0.86)
