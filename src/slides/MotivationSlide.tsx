@@ -5,18 +5,18 @@ import { PeopleWaffle } from "@/components/illustrations/PeopleWaffle";
 
 const STATS = [
   {
-    id: "competences",
-    value: 94,
-    color: "var(--color-clinic)",
-    label: "souhaitent renforcer leurs compétences",
-    note: "Volonté d'améliorer leurs pratiques en éducation aux IST et prise de conscience de leurs limites.",
-  },
-  {
     id: "role",
     value: 84,
     color: "var(--color-coral)",
     label: "perçoivent l'éducation à la sexualité comme partie de leur rôle",
     note: "Implication dans la promotion de la santé sexuelle, conforme aux recommandations de l'OMS.",
+  },
+  {
+    id: "competences",
+    value: 94,
+    color: "var(--color-clinic)",
+    label: "souhaitent renforcer leurs compétences",
+    note: "Volonté d'améliorer leurs pratiques en éducation aux IST et prise de conscience de leurs limites.",
   },
 ] as const;
 
