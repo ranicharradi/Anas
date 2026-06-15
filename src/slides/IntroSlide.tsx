@@ -16,12 +16,12 @@ import nurseEducation from "@/assets/photos/nurse-education.jpg";
 
 const PILIERS = ["Sensibilisation", "Éducation", "Dépistage", "Accompagnement"];
 
-const PROBLEMATIQUE_QUESTIONS = [
-  "Quels sont les principaux obstacles socioculturels limitant l’éducation des adolescents en matière de prévention des IST ?",
-  "Dans quelle mesure les pratiques éducatives infirmières contribuent-elles à la réduction des comportements à risque chez les adolescents ?",
-  "Les infirmiers disposent-ils des moyens et des compétences nécessaires pour assurer une éducation préventive efficace sur les IST ?",
-  "Les adolescents en Tunisie bénéficient-ils d’une éducation suffisante concernant la prévention des IST ?",
-  "Quel est le niveau des pratiques éducatives des infirmiers dans la prévention des infections sexuellement transmissibles chez les adolescents ?",
+const PROBLEMATIQUE_AXES = [
+  "Le niveau des pratiques éducatives infirmières",
+  "Les moyens et compétences disponibles",
+  "L’impact de ces pratiques sur les comportements à risque",
+  "Les obstacles socioculturels",
+  "Le niveau d’éducation des adolescents concernant la prévention des IST",
 ];
 
 export default function IntroSlide({ active }: SlideProps) {
@@ -43,8 +43,8 @@ export default function IntroSlide({ active }: SlideProps) {
     return onSlideInnerNavigation((direction) => {
       setQuestionIndex(
         (i) =>
-          (i + direction + PROBLEMATIQUE_QUESTIONS.length) %
-          PROBLEMATIQUE_QUESTIONS.length,
+          (i + direction + PROBLEMATIQUE_AXES.length) %
+          PROBLEMATIQUE_AXES.length,
       );
     });
   }, [active]);
@@ -202,22 +202,21 @@ export default function IntroSlide({ active }: SlideProps) {
         <span className="pointer-events-none absolute -right-4 -top-6 text-coral/[0.07] [&>svg]:h-32 [&>svg]:w-32">
           <IconCaduceus />
         </span>
-        <p className="relative font-display text-2xl leading-snug text-ink">
-          Malgré les efforts de prévention en Tunisie, les adolescents restent
-          vulnérables aux IST en raison des insuffisances éducatives et des
-          obstacles socioculturels.
+        <p className="relative font-display text-4xl font-medium leading-snug text-coral">
+          Quel est le niveau réel des pratiques éducatives des infirmiers en
+          matière de prévention des IST chez les adolescents&nbsp;?
         </p>
         <div className="relative mt-4 min-h-[6.5rem]">
           <p key={questionIndex} className="problem-question font-display text-[1.45rem] italic leading-snug text-clinic-deep">
-            {PROBLEMATIQUE_QUESTIONS[questionIndex]}
+            {PROBLEMATIQUE_AXES[questionIndex]}
           </p>
         </div>
         <div className="relative mt-4 flex items-center gap-2">
-          {PROBLEMATIQUE_QUESTIONS.map((question, i) => (
+          {PROBLEMATIQUE_AXES.map((axis, i) => (
             <button
-              key={question}
+              key={axis}
               type="button"
-              aria-label={`Afficher la question ${i + 1}`}
+              aria-label={`Afficher l’axe ${i + 1}`}
               onClick={() => setQuestionIndex(i)}
               className={`problem-dot h-2.5 rounded-full transition-all duration-300 ${
                 i === questionIndex ? "is-active w-9 bg-coral" : "w-2.5 bg-hair"

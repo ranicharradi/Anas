@@ -16,7 +16,7 @@ interface Step {
   n: string;
   /** Label split into manual lines (SVG text doesn't wrap). */
   lines: string[];
-  icon: "search" | "clipboard" | "chart" | "thumb" | "chat" | "shield";
+  icon: "search" | "clipboard" | "chart" | "thumb" | "chat" | "scale" | "shield";
   x: number;
   y: number;
 }
@@ -27,6 +27,7 @@ const PLAN: Pick<Step, "lines" | "icon">[] = [
   { lines: ["Introduction"], icon: "search" },
   { lines: ["Méthodologie"], icon: "clipboard" },
   { lines: ["Résultat et", "discussion"], icon: "chart" },
+  { lines: ["Points forts", "et limites"], icon: "scale" },
   { lines: ["Recommandations"], icon: "thumb" },
   { lines: ["Conclusion"], icon: "shield" },
 ];
@@ -248,6 +249,16 @@ function Icon({ name }: { name: Step["icon"] }) {
           <line x1={8.5} y1={11.5} x2={8.5} y2={11.5} />
           <line x1={12} y1={11.5} x2={12} y2={11.5} />
           <line x1={15.5} y1={11.5} x2={15.5} y2={11.5} />
+        </>
+      );
+    case "scale":
+      return (
+        <>
+          <path d="M12 3v18" />
+          <path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2" />
+          <path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z" />
+          <path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z" />
+          <path d="M7 21h10" />
         </>
       );
     case "shield":
