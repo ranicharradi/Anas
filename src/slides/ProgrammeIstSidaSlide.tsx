@@ -94,28 +94,14 @@ export default function ProgrammeIstSidaSlide({ active }: SlideProps) {
           Milieu d'exercice et programme national IST-Sida
         </h2>
         <p className="pis-sub mt-6 max-w-lg text-xl leading-relaxed text-muted">
-          Le milieu d'exercice est varié. Ce résultat rejoint les rapports de
-          l'Organisation mondiale de la Santé, qui préconisent une intégration
-          plus forte de l'éducation aux IST dans tous les services de soins
-          primaires.
+          Concernant le milieu d'exercice des participants, notre échantillon
+          est majoritairement représenté par les professionnels des{" "}
+          <strong className="font-semibold text-ink">CSB (42&nbsp;%)</strong> et
+          de la{" "}
+          <strong className="font-semibold text-ink">gynécologie (28&nbsp;%)</strong>,
+          ce qui souligne l'importance de ces structures dans les activités de
+          prévention et d'éducation aux IST auprès des adolescents.
         </p>
-
-        <div className="mt-8 grid grid-cols-2 gap-4">
-          <div className="pis-stat rounded-lg border border-hair/60 bg-white/60 px-5 py-5 shadow-[0_18px_55px_rgba(27,29,36,0.09)]">
-            <p className="mono-label text-clinic">Programme IST-Sida</p>
-            <p className="mt-3 font-display text-5xl font-light leading-none text-ink">
-              <span className="pis-count" data-to="54">0</span>%
-            </p>
-            <p className="mt-2 text-sm font-semibold text-muted">déclarent le connaître</p>
-          </div>
-          <div className="pis-stat rounded-lg border border-hair/60 bg-white/60 px-5 py-5 shadow-[0_18px_55px_rgba(27,29,36,0.09)]">
-            <p className="mono-label text-coral">À renforcer</p>
-            <p className="mt-3 font-display text-5xl font-light leading-none text-ink">
-              <span className="pis-count" data-to="46">0</span>%
-            </p>
-            <p className="mt-2 text-sm font-semibold text-muted">ne le connaissent pas</p>
-          </div>
-        </div>
       </section>
 
       <section className="pis-panel relative flex min-h-[610px] flex-col rounded-2xl border border-hair/50 bg-white/65 px-9 py-8 shadow-[0_28px_90px_rgba(27,29,36,0.12)] backdrop-blur-sm">
