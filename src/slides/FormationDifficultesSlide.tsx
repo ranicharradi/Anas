@@ -78,44 +78,46 @@ export default function FormationDifficultesSlide({ active }: SlideProps) {
           <p className="fd-head mono-label text-clinic">
             Formation programme national IST-Sida
           </p>
-          <div className="mt-2 grid flex-1 place-items-center">
+          <div className="flex flex-1 flex-col items-center justify-center">
             <StatRing value={76} active={active} size={210} />
-          </div>
 
-          {/* Ring caption as a tooltip; caret aimed up at the 76 %. */}
-          <div
-            className="fd-tip relative mt-6 max-w-[24ch] rounded-2xl px-4 py-2 text-center text-sm font-semibold text-white shadow-[0_12px_30px_rgba(27,29,36,0.20)]"
-            style={{ background: "var(--color-clinic-deep)" }}
-          >
-            <span
-              aria-hidden
-              className="absolute -top-1 left-1/2 h-2.5 w-2.5 -translate-x-1/2 rotate-45 rounded-[2px]"
+            {/* Ring caption as a tooltip; caret aimed up at the 76 %. */}
+            <div
+              className="fd-tip relative mt-6 max-w-[24ch] rounded-2xl px-4 py-2 text-center text-sm font-semibold text-white shadow-[0_12px_30px_rgba(27,29,36,0.20)]"
               style={{ background: "var(--color-clinic-deep)" }}
-            />
-            <span className="relative">n'ont jamais suivi de formation IST-Sida</span>
+            >
+              <span
+                aria-hidden
+                className="absolute -top-1 left-1/2 h-2.5 w-2.5 -translate-x-1/2 rotate-45 rounded-[2px]"
+                style={{ background: "var(--color-clinic-deep)" }}
+              />
+              <span className="relative">n'ont jamais suivi de formation IST-Sida</span>
+            </div>
+            <p className="fd-note mt-8 max-w-[28ch] text-[19px] leading-relaxed text-muted">
+              Cette insuffisance de formation apparaît également comme la
+              principale difficulté rencontrée par les professionnels.
+            </p>
           </div>
-          <p className="fd-note mt-8 text-[19px] leading-relaxed text-muted">
-            Cette insuffisance de formation apparaît également comme la
-            principale difficulté rencontrée par les professionnels.
-          </p>
         </div>
 
-        <div>
+        <div className="flex flex-col">
           <p className="fd-head mono-label text-center text-clinic">Principale difficulté rencontrée</p>
-          <RankedBars
-            data={DIFFICULTES}
-            rowClassName="fd-card"
-            barClassName="fd-bar"
-            countClassName="fd-count"
-            className="mt-5 flex flex-col gap-4"
-          />
-          <p className="fd-note mx-auto mt-6 max-w-2xl text-center text-sm leading-relaxed text-muted">
-            Ce résultat est particulièrement important car il permet d'expliquer
-            plusieurs limites observées au niveau des connaissances et des
-            pratiques éducatives. Ainsi, le renforcement de la formation continue
-            apparaît comme une priorité pour améliorer la qualité de la
-            prévention des IST.
-          </p>
+          <div className="flex flex-1 flex-col justify-center gap-8">
+            <RankedBars
+              data={DIFFICULTES}
+              rowClassName="fd-card"
+              barClassName="fd-bar"
+              countClassName="fd-count"
+              className="flex flex-col gap-6"
+            />
+            <p className="fd-note mx-auto max-w-2xl text-center text-sm leading-relaxed text-muted">
+              Ce résultat est particulièrement important car il permet d'expliquer
+              plusieurs limites observées au niveau des connaissances et des
+              pratiques éducatives. Ainsi, le renforcement de la formation continue
+              apparaît comme une priorité pour améliorer la qualité de la
+              prévention des IST.
+            </p>
+          </div>
         </div>
       </section>
     </div>
