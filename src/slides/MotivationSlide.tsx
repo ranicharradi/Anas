@@ -96,10 +96,10 @@ export default function MotivationSlide({ active }: SlideProps) {
 
               {/* Enhanced tooltip captioning the figure; caret aimed up at the % above. */}
               <div
-                className="mot-caption relative max-w-[22ch] rounded-2xl px-5 py-2.5 text-center text-sm font-semibold leading-snug text-white ring-1 ring-inset ring-white/25"
+                className="mot-caption relative max-w-[22ch] rounded-2xl px-5 py-2.5 text-center text-sm font-semibold leading-snug text-white"
                 style={{
                   backgroundImage: `linear-gradient(135deg, color-mix(in srgb, ${stat.color} 78%, white), ${stat.color})`,
-                  boxShadow: `0 16px 34px color-mix(in srgb, ${stat.color} 38%, transparent)`,
+                  boxShadow: "0 14px 30px rgba(27, 29, 36, 0.18)",
                 }}
               >
                 <span
