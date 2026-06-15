@@ -94,24 +94,28 @@ export default function MotivationSlide({ active }: SlideProps) {
                 <span style={{ color: stat.color }}>%</span>
               </p>
 
+              {/* Enhanced tooltip captioning the figure; caret aimed up at the % above. */}
+              <div
+                className="mot-caption relative max-w-[22ch] rounded-2xl px-5 py-2.5 text-center text-sm font-semibold leading-snug text-white ring-1 ring-inset ring-white/25"
+                style={{
+                  backgroundImage: `linear-gradient(135deg, color-mix(in srgb, ${stat.color} 78%, white), ${stat.color})`,
+                  boxShadow: `0 16px 34px color-mix(in srgb, ${stat.color} 38%, transparent)`,
+                }}
+              >
+                <span
+                  aria-hidden
+                  className="absolute -top-1.5 left-1/2 h-3 w-3 -translate-x-1/2 rotate-45 rounded-[3px]"
+                  style={{ background: `color-mix(in srgb, ${stat.color} 78%, white)` }}
+                />
+                <span className="relative drop-shadow-sm">{stat.label}</span>
+              </div>
+
               <PeopleWaffle
                 value={stat.value}
                 color={stat.color}
                 fillClassName="pw-on"
                 className="h-[208px] w-auto"
               />
-
-              <div
-                className="mot-caption relative max-w-[20ch] rounded-xl px-4 py-2 text-center text-sm font-semibold leading-snug text-white shadow-[0_12px_30px_rgba(27,29,36,0.20)]"
-                style={{ background: stat.color }}
-              >
-                <span
-                  aria-hidden
-                  className="absolute -top-1 left-1/2 h-2.5 w-2.5 -translate-x-1/2 rotate-45 rounded-[2px]"
-                  style={{ background: stat.color }}
-                />
-                <span className="relative">{stat.label}</span>
-              </div>
               <p className="mot-note max-w-[24ch] text-center text-sm leading-relaxed text-ink">
                 {stat.note}
               </p>
