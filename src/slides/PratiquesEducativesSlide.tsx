@@ -38,6 +38,7 @@ export default function PratiquesEducativesSlide({ active }: SlideProps) {
         .from(".pe-head", { opacity: 0, y: 10, duration: 0.45, stagger: 0.12 }, 0.4)
         .from(".pe-card", { x: 26, opacity: 0, duration: 0.5, stagger: 0.07 }, 0.5)
         .from(".pe-bar", { scaleX: 0, transformOrigin: "left", duration: 0.8, stagger: 0.07, ease: "power3.out" }, 0.58)
+        .from(".pe-note", { opacity: 0, y: 10, duration: 0.45, stagger: 0.12 }, 0.78)
         .from(".ill-piece", { scale: 0.9, opacity: 0, transformOrigin: "center", duration: 0.55, stagger: 0.1, ease: "back.out(1.6)" }, 0.5);
 
       root.current?.querySelectorAll<HTMLElement>(".pe-count").forEach((node) => {
@@ -80,7 +81,7 @@ export default function PratiquesEducativesSlide({ active }: SlideProps) {
       <section className="pe-board relative min-h-[610px] overflow-hidden rounded-lg border border-hair/60 bg-white/55 p-9 shadow-[0_28px_90px_rgba(27,29,36,0.12)] backdrop-blur-sm">
         <EducationGroupe className="pointer-events-none absolute -bottom-10 -right-8 w-[360px] opacity-[0.13]" />
 
-        <div className="relative z-10 flex h-full flex-col justify-center gap-10">
+        <div className="relative z-10 flex h-full flex-col justify-center gap-7">
           <div>
             <p className="pe-head mono-label text-coral">La réticence des adolescents</p>
             <RankedBars
@@ -90,9 +91,13 @@ export default function PratiquesEducativesSlide({ active }: SlideProps) {
               countClassName="pe-count"
               className="mt-5 flex flex-col gap-5"
             />
+            <p className="pe-note mt-4 max-w-2xl text-sm leading-relaxed text-muted">
+              Cette approche semble adaptée car elle favorise l'instauration
+              progressive d'un climat de confiance.
+            </p>
           </div>
 
-          <div className="border-t border-hair/40 pt-8">
+          <div className="border-t border-hair/40 pt-6">
             <p className="pe-head mono-label text-clinic">Méthode éducative utilisée</p>
             <RankedBars
               data={METHODES}
@@ -101,6 +106,11 @@ export default function PratiquesEducativesSlide({ active }: SlideProps) {
               countClassName="pe-count"
               className="mt-5 flex flex-col gap-5"
             />
+            <p className="pe-note mt-4 max-w-2xl text-sm leading-relaxed text-muted">
+              Ces résultats montrent que les méthodes innovantes pourraient être
+              davantage développées afin d'améliorer l'efficacité des
+              interventions éducatives.
+            </p>
           </div>
         </div>
       </section>
