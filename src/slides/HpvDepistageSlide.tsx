@@ -125,6 +125,12 @@ export default function HpvDepistageSlide({ active }: SlideProps) {
       });
 
       tl.from(
+        ".hpv-tip",
+        { scale: 0, opacity: 0, transformOrigin: "top center", duration: 0.45, stagger: 0.14, ease: "back.out(2)" },
+        1.0,
+      );
+
+      tl.from(
         ".hpv-pill",
         { scale: 0, opacity: 0, transformOrigin: "center", duration: 0.42, stagger: 0.07, ease: "back.out(2)" },
         1.1,
@@ -202,11 +208,23 @@ export default function HpvDepistageSlide({ active }: SlideProps) {
                     <span className="hpv-count" data-to={card.value}>0</span>
                     <span style={{ color: card.accent }}>%</span>
                   </p>
-                  <p className="mono-label mt-1.5 text-muted">{card.caption}</p>
                 </div>
               </div>
 
-              <h3 className="mt-6 font-display text-3xl font-normal leading-tight text-ink">{card.title}</h3>
+              {/* Always-on tooltip captioning the percentage; caret aimed up at the figure. */}
+              <div
+                className="hpv-tip relative mt-3.5 inline-flex items-center rounded-full px-4 py-1.5 text-sm font-semibold text-white shadow-[0_12px_30px_rgba(27,29,36,0.22)]"
+                style={{ background: card.accent }}
+              >
+                <span
+                  aria-hidden
+                  className="absolute -top-1 left-1/2 h-2.5 w-2.5 -translate-x-1/2 rotate-45 rounded-[2px]"
+                  style={{ background: card.accent }}
+                />
+                <span className="relative whitespace-nowrap">{card.caption}</span>
+              </div>
+
+              <h3 className="mt-5 font-display text-3xl font-normal leading-tight text-ink">{card.title}</h3>
               <p className="mt-2.5 max-w-sm text-[0.95rem] leading-relaxed text-muted">{card.copy}</p>
 
               <div className="mt-auto w-full pt-6">
