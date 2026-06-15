@@ -30,8 +30,8 @@ export default function FormationDifficultesSlide({ active }: SlideProps) {
         .timeline({ defaults: { ease: "power3.out" } })
         .from(".fd-kicker", { y: 14, opacity: 0, duration: 0.5 })
         .from(split.words, { yPercent: 120, duration: 0.72, stagger: 0.05 }, 0)
-        .from(".fd-sub", { y: 18, opacity: 0, duration: 0.55 }, 0.18)
         .from(".fd-board", { opacity: 0, y: 30, duration: 0.65 }, 0.28)
+        .from(".fd-split", { scaleY: 0, transformOrigin: "top", duration: 0.7, ease: "power2.inOut" }, 0.5)
         .from(".fd-head", { opacity: 0, y: 10, duration: 0.45, stagger: 0.12 }, 0.42)
         .from(".fd-card", { x: 26, opacity: 0, duration: 0.5, stagger: 0.07 }, 0.6)
         .from(".fd-bar", { scaleX: 0, transformOrigin: "left", duration: 0.8, stagger: 0.07, ease: "power3.out" }, 0.66)
@@ -62,19 +62,18 @@ export default function FormationDifficultesSlide({ active }: SlideProps) {
   );
 
   return (
-    <div ref={root} className="grid h-full grid-cols-[0.78fr_1.22fr] items-center gap-14 px-20 py-12">
-      <section>
+    <div ref={root} className="flex h-full flex-col gap-8 px-20 py-12">
+      <header>
         <p className="fd-kicker mono-label text-clinic">Résultats · Pratiques éducatives</p>
-        <h2 className="fd-title mt-4 max-w-xl font-display text-6xl font-light leading-[1.03] text-ink">
+        <h2 className="fd-title mt-3 max-w-3xl font-display text-6xl font-light leading-[1.03] text-ink">
           Formation et difficultés rencontrées
         </h2>
-        <p className="fd-sub mt-6 max-w-lg text-xl leading-relaxed text-muted">
-          Le déficit de formation au programme national IST-Sida est le frein
-          majeur des pratiques éducatives infirmières.
-        </p>
-      </section>
+      </header>
 
-      <section className="fd-board relative grid min-h-[610px] grid-cols-[0.82fr_1.18fr] items-center gap-9 overflow-hidden rounded-lg border border-hair/60 bg-white/55 p-9 shadow-[0_28px_90px_rgba(27,29,36,0.12)] backdrop-blur-sm">
+      <section className="fd-board relative grid min-h-0 flex-1 grid-cols-2 items-center gap-9 overflow-hidden rounded-lg border border-hair/60 bg-white/55 p-9 shadow-[0_28px_90px_rgba(27,29,36,0.12)] backdrop-blur-sm">
+        {/* vertical divider between the two halves */}
+        <div className="fd-split absolute left-1/2 top-9 bottom-9 w-px -translate-x-1/2 bg-hair/45" aria-hidden />
+
         <div className="flex flex-col items-center text-center">
           <p className="fd-head mono-label text-coral">
             Formation programme national IST-Sida
