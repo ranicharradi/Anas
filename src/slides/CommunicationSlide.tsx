@@ -73,8 +73,10 @@ export default function CommunicationSlide({ active }: SlideProps) {
           Facteurs favorisant une communication efficace
         </h2>
         <p className="cm-sub mt-6 max-w-lg text-xl leading-relaxed text-muted">
-          Les bases relationnelles sont présentes, mais certaines compétences
-          restent à renforcer pour mieux dialoguer avec les adolescents.
+          Les résultats montrent une bonne maîtrise de l'écoute active, du
+          respect, de l'absence de jugement et de la confidentialité. Ces
+          compétences sont essentielles pour établir une relation de confiance
+          avec les adolescents.
         </p>
         <DuotonePhoto
           src={nurseCare}
@@ -136,9 +138,10 @@ export default function CommunicationSlide({ active }: SlideProps) {
           </div>
 
           <p className="cm-cap mt-9 max-w-[52ch] text-[17px] leading-relaxed text-muted">
-            L'écoute active, le respect et la confidentialité sont bien maîtrisés.
-            L'empathie et le langage adapté restent à renforcer, conformément aux
-            recommandations de l'UNESCO.
+            Certaines lacunes persistent concernant l'empathie, le langage adapté
+            et la disponibilité. Cela montre que les compétences techniques
+            doivent être accompagnées de compétences relationnelles afin de
+            garantir une communication plus efficace.
           </p>
         </div>
       </section>

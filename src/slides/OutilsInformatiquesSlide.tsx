@@ -46,7 +46,7 @@ const TOOLS: ToolItem[] = [
     n: "04",
     name: "React + GSAP",
     role: "Application web animée",
-    detail: "Diaporama interactif codé sur mesure, sans gabarit.",
+    detail: "Diaporama interactif codé sur mesure.",
     logo: reactLogo,
     color: "#149eca",
   },
