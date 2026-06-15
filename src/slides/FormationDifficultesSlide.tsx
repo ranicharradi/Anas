@@ -110,6 +110,13 @@ export default function FormationDifficultesSlide({ active }: SlideProps) {
             countClassName="fd-count"
             className="mt-5 flex flex-col gap-4"
           />
+          <p className="fd-note mt-6 max-w-2xl text-sm leading-relaxed text-muted">
+            Ce résultat est particulièrement important car il permet d'expliquer
+            plusieurs limites observées au niveau des connaissances et des
+            pratiques éducatives. Ainsi, le renforcement de la formation continue
+            apparaît comme une priorité pour améliorer la qualité de la
+            prévention des IST.
+          </p>
         </div>
       </section>
     </div>
