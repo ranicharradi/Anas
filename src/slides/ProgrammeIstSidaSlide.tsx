@@ -217,10 +217,14 @@ export default function ProgrammeIstSidaSlide({ active }: SlideProps) {
 
           <div className="pis-note rounded-lg border border-hair/60 bg-paper/70 p-6">
             <p className="text-lg leading-relaxed text-muted">
-              <strong className="font-semibold text-ink">54 % déclarent connaître le programme national IST-Sida.</strong>{" "}
-              Ce résultat reste préoccupant et souligne la nécessité de renforcer
-              la formation continue ainsi que la sensibilisation des infirmiers
-              aux programmes de santé publique.
+              La connaissance du programme national IST-Sida,{" "}
+              <strong className="font-semibold text-ink">seulement 54&nbsp;%</strong>{" "}
+              des participants déclarent le connaître. Ce résultat est
+              préoccupant car ce programme constitue un outil essentiel dans la
+              prévention et la prise en charge des IST. Cela peut s'expliquer par
+              un manque de diffusion de l'information ou par une insuffisance de
+              formation continue. Ces résultats montrent donc la nécessité de
+              renforcer
             </p>
           </div>
         </div>
