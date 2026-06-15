@@ -224,7 +224,7 @@ export default function ProgrammeIstSidaSlide({ active }: SlideProps) {
               prévention et la prise en charge des IST. Cela peut s'expliquer par
               un manque de diffusion de l'information ou par une insuffisance de
               formation continue. Ces résultats montrent donc la nécessité de
-              renforcer
+              renforcer.
             </p>
           </div>
         </div>

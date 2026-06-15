@@ -17,11 +17,11 @@ import nurseEducation from "@/assets/photos/nurse-education.jpg";
 const PILIERS = ["Sensibilisation", "Éducation", "Dépistage", "Accompagnement"];
 
 const PROBLEMATIQUE_AXES = [
-  "Le niveau des pratiques éducatives infirmières",
-  "Les moyens et compétences disponibles",
-  "L’impact de ces pratiques sur les comportements à risque",
-  "Les obstacles socioculturels",
-  "Le niveau d’éducation des adolescents concernant la prévention des IST",
+  "Le niveau des pratiques éducatives infirmières.",
+  "Les moyens et compétences disponibles.",
+  "L’impact de ces pratiques sur les comportements à risque.",
+  "Les obstacles socioculturels.",
+  "Le niveau d’éducation des adolescents concernant la prévention des IST.",
 ];
 
 export default function IntroSlide({ active }: SlideProps) {
