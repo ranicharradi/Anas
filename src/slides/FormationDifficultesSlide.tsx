@@ -33,7 +33,6 @@ export default function FormationDifficultesSlide({ active }: SlideProps) {
         .from(".fd-sub", { y: 18, opacity: 0, duration: 0.55 }, 0.18)
         .from(".fd-board", { opacity: 0, y: 30, duration: 0.65 }, 0.28)
         .from(".fd-head", { opacity: 0, y: 10, duration: 0.45, stagger: 0.12 }, 0.42)
-        .from(".fd-split", { scaleY: 0, transformOrigin: "top", duration: 0.7, ease: "power2.inOut" }, 0.42)
         .from(".fd-card", { x: 26, opacity: 0, duration: 0.5, stagger: 0.07 }, 0.6)
         .from(".fd-bar", { scaleX: 0, transformOrigin: "left", duration: 0.8, stagger: 0.07, ease: "power3.out" }, 0.66)
         .from(".fd-tip", { scale: 0, opacity: 0, transformOrigin: "top center", duration: 0.45, ease: "back.out(2)" }, 0.8)
@@ -77,7 +76,7 @@ export default function FormationDifficultesSlide({ active }: SlideProps) {
 
       <section className="fd-board relative grid min-h-[610px] grid-cols-[0.82fr_1.18fr] items-center gap-9 overflow-hidden rounded-lg border border-hair/60 bg-white/55 p-9 shadow-[0_28px_90px_rgba(27,29,36,0.12)] backdrop-blur-sm">
         <div className="flex flex-col items-center text-center">
-          <p className="fd-head mono-label self-start text-left text-coral">
+          <p className="fd-head mono-label text-coral">
             Formation programme national IST-Sida
           </p>
           <div className="mt-2 grid flex-1 place-items-center">
@@ -96,13 +95,11 @@ export default function FormationDifficultesSlide({ active }: SlideProps) {
             />
             <span className="relative">n'ont jamais suivi de formation IST-Sida</span>
           </div>
-          <p className="fd-note text-[19px] leading-relaxed text-muted">
-            Seuls 24 % des infirmiers ont bénéficié d'une telle formation : un
-            déficit significatif dans la mise en place de formations spécifiques.
+          <p className="fd-note mt-8 text-[19px] leading-relaxed text-muted">
+            Cette insuffisance de formation apparaît également comme la
+            principale difficulté rencontrée par les professionnels.
           </p>
         </div>
-
-        <div className="fd-split absolute left-[34%] top-9 bottom-9 w-px bg-hair/45" aria-hidden />
 
         <div>
           <p className="fd-head mono-label text-clinic">Principale difficulté rencontrée</p>
