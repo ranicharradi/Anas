@@ -71,8 +71,13 @@ export default function SignesCliniquesSlide({ active }: SlideProps) {
           Identification des signes cliniques des IST
         </h2>
         <p className="sc-sub mt-6 max-w-lg text-xl leading-relaxed text-muted">
-          L'écoulement anormal est le signe le plus fréquemment identifié, tandis
-          que les douleurs abdominales restent les moins citées.
+          Les signes les plus fréquemment cités sont : la fièvre, les écoulements
+          anormaux, les démangeaisons génitales, les plaies ou boutons génitaux.
+          En revanche, les symptômes moins spécifiques, comme la brûlure à la
+          miction ou les douleurs abdominales, sont moins souvent reconnus. Cela
+          suggère que les professionnels identifient plus facilement les
+          manifestations évidentes que les signes atypiques, ce qui rejoint les
+          observations du CDC.
         </p>
       </section>
 
