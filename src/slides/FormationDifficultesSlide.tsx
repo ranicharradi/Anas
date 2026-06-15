@@ -81,12 +81,12 @@ export default function FormationDifficultesSlide({ active }: SlideProps) {
             Formation programme national IST-Sida
           </p>
           <div className="mt-2 grid flex-1 place-items-center">
-            <StatRing value={76} active={active} size={230} />
+            <StatRing value={76} active={active} size={210} />
           </div>
 
           {/* Ring caption as a tooltip; caret aimed up at the 76 %. */}
           <div
-            className="fd-tip relative max-w-[24ch] rounded-2xl px-4 py-2 text-center text-sm font-semibold text-white shadow-[0_12px_30px_rgba(27,29,36,0.20)]"
+            className="fd-tip relative mt-6 max-w-[24ch] rounded-2xl px-4 py-2 text-center text-sm font-semibold text-white shadow-[0_12px_30px_rgba(27,29,36,0.20)]"
             style={{ background: "var(--color-clinic-deep)" }}
           >
             <span
