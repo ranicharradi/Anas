@@ -70,12 +70,12 @@ export default function FormationDifficultesSlide({ active }: SlideProps) {
         </h2>
       </header>
 
-      <section className="fd-board relative grid min-h-0 flex-1 grid-cols-2 items-center gap-9 overflow-hidden rounded-lg border border-hair/60 bg-white/55 p-9 shadow-[0_28px_90px_rgba(27,29,36,0.12)] backdrop-blur-sm">
+      <section className="fd-board relative grid min-h-0 flex-1 grid-cols-2 items-stretch gap-9 overflow-hidden rounded-lg border border-hair/60 bg-white/55 p-9 shadow-[0_28px_90px_rgba(27,29,36,0.12)] backdrop-blur-sm">
         {/* vertical divider between the two halves */}
         <div className="fd-split absolute left-1/2 top-9 bottom-9 w-px -translate-x-1/2 bg-hair/45" aria-hidden />
 
         <div className="flex flex-col items-center text-center">
-          <p className="fd-head mono-label text-coral">
+          <p className="fd-head mono-label text-clinic">
             Formation programme national IST-Sida
           </p>
           <div className="mt-2 grid flex-1 place-items-center">
@@ -101,7 +101,7 @@ export default function FormationDifficultesSlide({ active }: SlideProps) {
         </div>
 
         <div>
-          <p className="fd-head mono-label text-clinic">Principale difficulté rencontrée</p>
+          <p className="fd-head mono-label text-center text-clinic">Principale difficulté rencontrée</p>
           <RankedBars
             data={DIFFICULTES}
             rowClassName="fd-card"
@@ -109,7 +109,7 @@ export default function FormationDifficultesSlide({ active }: SlideProps) {
             countClassName="fd-count"
             className="mt-5 flex flex-col gap-4"
           />
-          <p className="fd-note mt-6 max-w-2xl text-sm leading-relaxed text-muted">
+          <p className="fd-note mx-auto mt-6 max-w-2xl text-center text-sm leading-relaxed text-muted">
             Ce résultat est particulièrement important car il permet d'expliquer
             plusieurs limites observées au niveau des connaissances et des
             pratiques éducatives. Ainsi, le renforcement de la formation continue
