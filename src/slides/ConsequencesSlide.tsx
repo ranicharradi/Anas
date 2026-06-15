@@ -207,9 +207,10 @@ export default function ConsequencesSlide({ active }: SlideProps) {
           </svg>
 
           <p className="cs-cap mt-1 max-w-[46ch] text-[17px] leading-relaxed text-muted">
-            80 % de transmission au partenaire confirment la forte contagiosité,
-            en cohérence avec l'OMS : plus d'un million de nouvelles infections
-            par jour.
+            80 % identifient la transmission au partenaire comme une conséquence
+            majeure des IST non traitées. Ces résultats mettent en évidence la
+            conscience des professionnels face aux conséquences individuelles et
+            collectives des IST.
           </p>
         </article>
 
@@ -255,9 +256,9 @@ export default function ConsequencesSlide({ active }: SlideProps) {
           </div>
 
           <p className="cs-cap text-[17px] leading-relaxed text-muted">
-            80 % des participants reconnaissent la transmission mère-enfant ;
-            conforme à l'OMS sur les risques graves pour le nouveau-né pendant la
-            grossesse.
+            80 % des participants reconnaissent cette voie de transmission. Cela
+            démontre un bon niveau de connaissance sur les risques des IST pendant
+            la grossesse.
           </p>
         </article>
       </section>
