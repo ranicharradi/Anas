@@ -215,9 +215,12 @@ export default function KnowledgeOverviewSlide({ active }: SlideProps) {
         <div className="ko-note mt-5 flex gap-4">
           <span className="mt-1 w-1 shrink-0 rounded-full bg-coral" />
           <p className="text-lg leading-relaxed text-muted">
-            Constat discuté : les risques liés aux rapports sexuels sont bien
-            reconnus, alors que le contact indirect reste très peu identifié
-            comme mode de transmission.
+            Les infirmiers maîtrisent généralement les risques liés aux rapports
+            sexuels non protégés. Cependant, une confusion persiste concernant
+            certains modes de transmission indirecte. Cette situation montre que
+            certaines connaissances restent incomplètes malgré une base théorique
+            satisfaisante. Nos résultats rejoignent les données de l'OMS qui
+            soulignent l'importance de la formation continue.
           </p>
         </div>
       </section>
