@@ -131,7 +131,7 @@ function Field({
     <div className={align === "right" ? "text-right" : "text-left"}>
       <p className="mono-label text-clinic">{label}</p>
       {values.map((v) => (
-        <p key={v} className="mt-1.5 text-[17px] font-medium text-ink">
+        <p key={v} className="mt-1.5 text-[19px] font-medium text-ink">
           {v}
         </p>
       ))}

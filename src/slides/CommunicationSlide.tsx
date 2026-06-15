@@ -137,7 +137,7 @@ export default function CommunicationSlide({ active }: SlideProps) {
             ))}
           </div>
 
-          <p className="cm-cap mt-9 max-w-[52ch] text-[17px] leading-relaxed text-muted">
+          <p className="cm-cap mt-9 max-w-[52ch] text-[19px] leading-relaxed text-muted">
             Certaines lacunes persistent concernant l'empathie, le langage adapté
             et la disponibilité. Cela montre que les compétences techniques
             doivent être accompagnées de compétences relationnelles afin de

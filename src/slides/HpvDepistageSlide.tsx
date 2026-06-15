@@ -225,7 +225,7 @@ export default function HpvDepistageSlide({ active }: SlideProps) {
               </div>
 
               <h3 className="mt-5 font-display text-3xl font-normal leading-tight text-ink">{card.title}</h3>
-              <p className="mt-2.5 max-w-sm text-[0.95rem] leading-relaxed text-muted">{card.copy}</p>
+              <p className="mt-2.5 max-w-sm text-[1.05rem] leading-relaxed text-muted">{card.copy}</p>
 
               <div className="mt-auto w-full pt-6">
                 <div className="h-px w-full bg-hair/50" />

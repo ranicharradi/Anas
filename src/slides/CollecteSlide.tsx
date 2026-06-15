@@ -141,7 +141,7 @@ export default function CollecteSlide({ active }: SlideProps) {
 
             <div className="min-w-0 flex-1">
               <div className="flex items-baseline justify-between gap-4">
-                <p className="truncate text-[20px] font-semibold text-ink">{v.label}</p>
+                <p className="truncate text-[22px] font-semibold text-ink">{v.label}</p>
                 <p className="shrink-0 text-base font-medium text-muted">
                   <span className="count-up tabular-nums" data-to={v.q}>0</span> questions
                 </p>

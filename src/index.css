@@ -12,11 +12,30 @@
   --color-clinic-deep: #08515f;
   --color-clinic-soft: #cfe6ea;
   --color-coral: #cf5a4e; /* secondary accent — placeholder */
-  --color-muted: #6c7079;
+  --color-muted: #474c55; /* darkened from #6c7079 for body-text contrast */
   --color-hair: #c8c2b2; /* hairline rules */
 
   --font-display: "Fraunces Variable", serif;
   --font-sans: "Inter Variable", system-ui, sans-serif;
+
+  /*
+   * Readability scale: body-range type is enlarged and given roomier
+   * line-height vs Tailwind defaults. Display sizes (3xl+) are left untouched
+   * so headings don't overflow the fixed-height slides. `leading-*` utilities
+   * still override the paired line-height where a slide sets one explicitly.
+   */
+  --text-xs: 0.8rem;
+  --text-xs--line-height: 1.15rem;
+  --text-sm: 0.95rem;
+  --text-sm--line-height: 1.45rem;
+  --text-base: 1.07rem;
+  --text-base--line-height: 1.7rem;
+  --text-lg: 1.22rem;
+  --text-lg--line-height: 1.95rem;
+  --text-xl: 1.36rem;
+  --text-xl--line-height: 2rem;
+  --text-2xl: 1.6rem;
+  --text-2xl--line-height: 2.2rem;
 }
 
 html,
@@ -29,6 +48,9 @@ body {
   margin: 0;
   color: var(--color-ink);
   font-family: var(--font-sans);
+  /* Slightly heavier default so unweighted body copy reads better from a
+     distance; headings/labels set their own weight and are unaffected. */
+  font-weight: 450;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   /* Atmospheric ground: warm paper with a soft off-center clinical glow. */

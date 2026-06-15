@@ -87,7 +87,7 @@ export default function FormationDifficultesSlide({ active }: SlideProps) {
               size={230}
             />
           </div>
-          <p className="fd-note text-[17px] leading-relaxed text-muted">
+          <p className="fd-note text-[19px] leading-relaxed text-muted">
             Seuls 24 % des infirmiers ont bénéficié d'une telle formation : un
             déficit significatif dans la mise en place de formations spécifiques.
           </p>

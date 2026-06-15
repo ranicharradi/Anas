@@ -85,7 +85,7 @@ export default function ConclusionSlide({ active }: SlideProps) {
 
       {/* Narrative + closing photo */}
       <div className="grid grid-cols-[1.3fr_0.7fr] items-center gap-10">
-        <p className="concl-narrative text-[20px] leading-relaxed text-ink/85">
+        <p className="concl-narrative text-[22px] leading-relaxed text-ink/85">
           Les IST constituent un{" "}
           <strong className="font-semibold text-ink">
             problème majeur de santé publique
@@ -127,12 +127,12 @@ export default function ConclusionSlide({ active }: SlideProps) {
             />
             <div className="flex-1">
               <h3
-                className="font-display text-[1.45rem] font-light leading-snug"
+                className="font-display text-[1.6rem] font-light leading-snug"
                 style={{ color: p.accent }}
               >
                 {p.label}
               </h3>
-              <p className="mt-3 text-[17px] leading-relaxed text-muted">
+              <p className="mt-3 text-[19px] leading-relaxed text-muted">
                 {p.gloss}
               </p>
             </div>

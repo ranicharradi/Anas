@@ -149,8 +149,8 @@ export default function ChatbotSlide({ active }: SlideProps) {
               <div
                 className={
                   message.role === "user"
-                    ? "max-w-[80%] rounded-2xl rounded-br-sm bg-clinic px-4 py-3 text-[17px] leading-relaxed text-paper"
-                    : "max-w-[85%] rounded-2xl rounded-bl-sm border border-hair/50 bg-white/80 px-4 py-3 text-[17px] leading-relaxed text-ink"
+                    ? "max-w-[80%] rounded-2xl rounded-br-sm bg-clinic px-4 py-3 text-[19px] leading-relaxed text-paper"
+                    : "max-w-[85%] rounded-2xl rounded-bl-sm border border-hair/50 bg-white/80 px-4 py-3 text-[19px] leading-relaxed text-ink"
                 }
               >
                 {message.content ||
@@ -173,7 +173,7 @@ export default function ChatbotSlide({ active }: SlideProps) {
             value={input}
             onChange={(event) => setInput(event.target.value)}
             placeholder="Écrivez votre question…"
-            className="flex-1 rounded-full border border-hair/60 bg-white/80 px-5 py-3 text-[17px] text-ink outline-none placeholder:text-muted focus:border-clinic"
+            className="flex-1 rounded-full border border-hair/60 bg-white/80 px-5 py-3 text-[19px] text-ink outline-none placeholder:text-muted focus:border-clinic"
           />
           <button
             type="submit"

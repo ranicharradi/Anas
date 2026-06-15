@@ -104,7 +104,7 @@ export default function RecommandationsSlide({ active }: SlideProps) {
             </span>
 
             {/* Text */}
-            <p className="text-[17px] leading-relaxed text-ink">{r.text}</p>
+            <p className="text-[19px] leading-relaxed text-ink">{r.text}</p>
           </article>
         ))}
       </div>
