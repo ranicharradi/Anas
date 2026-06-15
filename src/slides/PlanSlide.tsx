@@ -17,18 +17,21 @@ interface Step {
   /** Label split into manual lines (SVG text doesn't wrap). */
   lines: string[];
   icon: "search" | "clipboard" | "chart" | "thumb" | "chat" | "scale" | "shield";
+  /** Per-label font size override; defaults to 25. Used to fit wide labels
+   *  (e.g. "Recommandations") within the gap between the flanking arcs. */
+  labelSize?: number;
   x: number;
   y: number;
 }
 
 // Roadmap steps in order. Number and position are derived below so the row
 // stays evenly spaced and correctly numbered however many steps there are.
-const PLAN: Pick<Step, "lines" | "icon">[] = [
+const PLAN: Pick<Step, "lines" | "icon" | "labelSize">[] = [
   { lines: ["Introduction"], icon: "search" },
   { lines: ["Méthodologie"], icon: "clipboard" },
   { lines: ["Résultat et", "discussion"], icon: "chart" },
   { lines: ["Points forts", "et limites"], icon: "scale" },
-  { lines: ["Recommandations"], icon: "thumb" },
+  { lines: ["Recommandations"], icon: "thumb", labelSize: 19 },
   { lines: ["Conclusion"], icon: "shield" },
 ];
 
@@ -188,7 +191,7 @@ export default function PlanSlide({ active }: SlideProps) {
                   x={s.x}
                   y={labelY}
                   textAnchor="middle"
-                  fontSize={25}
+                  fontSize={s.labelSize ?? 25}
                   fontWeight={600}
                   fill="var(--color-ink)"
                   style={{ fontFamily: "var(--font-sans)" }}
