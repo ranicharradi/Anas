@@ -101,10 +101,18 @@ export default function MotivationSlide({ active }: SlideProps) {
                 className="h-[208px] w-auto"
               />
 
-              <p className="mot-caption max-w-[18ch] text-center text-sm font-semibold leading-snug text-ink">
-                {stat.label}
-              </p>
-              <p className="mot-note max-w-[20ch] text-center text-xs leading-relaxed text-muted">
+              <div
+                className="mot-caption relative max-w-[20ch] rounded-xl px-4 py-2 text-center text-sm font-semibold leading-snug text-white shadow-[0_12px_30px_rgba(27,29,36,0.20)]"
+                style={{ background: stat.color }}
+              >
+                <span
+                  aria-hidden
+                  className="absolute -top-1 left-1/2 h-2.5 w-2.5 -translate-x-1/2 rotate-45 rounded-[2px]"
+                  style={{ background: stat.color }}
+                />
+                <span className="relative">{stat.label}</span>
+              </div>
+              <p className="mot-note max-w-[24ch] text-center text-sm leading-relaxed text-ink">
                 {stat.note}
               </p>
             </div>
