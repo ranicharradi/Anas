@@ -14,7 +14,9 @@ export function StatRing({
   size = 280,
 }: {
   value: number;
-  label: string;
+  /** In-ring caption under the number. Omit to render the number alone (e.g.
+   *  when the slide shows the caption as a separate tooltip). */
+  label?: string;
   active: boolean;
   size?: number;
 }) {
@@ -85,7 +87,9 @@ export function StatRing({
             <span ref={numRef}>0</span>
             <span className="text-clinic">%</span>
           </p>
-          <p className="mono-label mt-4 max-w-[16ch] text-muted">{label}</p>
+          {label ? (
+            <p className="mono-label mt-4 max-w-[16ch] text-muted">{label}</p>
+          ) : null}
         </div>
       </div>
     </div>

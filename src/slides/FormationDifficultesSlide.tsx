@@ -36,6 +36,7 @@ export default function FormationDifficultesSlide({ active }: SlideProps) {
         .from(".fd-split", { scaleY: 0, transformOrigin: "top", duration: 0.7, ease: "power2.inOut" }, 0.42)
         .from(".fd-card", { x: 26, opacity: 0, duration: 0.5, stagger: 0.07 }, 0.6)
         .from(".fd-bar", { scaleX: 0, transformOrigin: "left", duration: 0.8, stagger: 0.07, ease: "power3.out" }, 0.66)
+        .from(".fd-tip", { scale: 0, opacity: 0, transformOrigin: "top center", duration: 0.45, ease: "back.out(2)" }, 0.8)
         .from(".fd-note", { opacity: 0, y: 12, duration: 0.5 }, 0.85);
 
       root.current?.querySelectorAll<HTMLElement>(".fd-count").forEach((node) => {
@@ -80,12 +81,20 @@ export default function FormationDifficultesSlide({ active }: SlideProps) {
             Formation programme national IST-Sida
           </p>
           <div className="mt-2 grid flex-1 place-items-center">
-            <StatRing
-              value={76}
-              label="n'ont jamais suivi de formation IST-Sida"
-              active={active}
-              size={230}
+            <StatRing value={76} active={active} size={230} />
+          </div>
+
+          {/* Ring caption as a tooltip; caret aimed up at the 76 %. */}
+          <div
+            className="fd-tip relative max-w-[24ch] rounded-2xl px-4 py-2 text-center text-sm font-semibold text-white shadow-[0_12px_30px_rgba(27,29,36,0.20)]"
+            style={{ background: "var(--color-clinic-deep)" }}
+          >
+            <span
+              aria-hidden
+              className="absolute -top-1 left-1/2 h-2.5 w-2.5 -translate-x-1/2 rotate-45 rounded-[2px]"
+              style={{ background: "var(--color-clinic-deep)" }}
             />
+            <span className="relative">n'ont jamais suivi de formation IST-Sida</span>
           </div>
           <p className="fd-note text-[19px] leading-relaxed text-muted">
             Seuls 24 % des infirmiers ont bénéficié d'une telle formation : un
