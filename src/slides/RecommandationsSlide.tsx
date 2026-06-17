@@ -27,7 +27,7 @@ const RECOS: Reco[] = [
   },
   {
     n: "03",
-    text: "Encourager des supports pédagogiques variés (brochures, affiches, vidéos, outils numériques, réseaux sociaux) pour rendre la prévention plus attractive et compréhensible.",
+    text: "Élaborer des supports pédagogiques variés (brochures, affiches, vidéos, outils numériques, réseaux sociaux) pour rendre la prévention plus attractive et compréhensible.",
     accent: "var(--color-coral)",
   },
   {
@@ -84,7 +84,7 @@ export default function RecommandationsSlide({ active }: SlideProps) {
           Pistes d'amélioration
         </h2>
         <p className="reco-lead mt-3 text-xl leading-relaxed text-muted">
-          Six recommandations issues de l'analyse, à l'intention des équipes soignantes et des décideurs.
+          À partir des résultats obtenus, nous proposons plusieurs recommandations&nbsp;:
         </p>
       </div>
 

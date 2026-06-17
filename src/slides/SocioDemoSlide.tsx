@@ -146,7 +146,7 @@ export default function SocioDemoSlide({ active }: SlideProps) {
       <section>
         <p className="sd-kicker mono-label text-clinic">Résultats · Échantillon</p>
         <h2 className="sd-title mt-4 max-w-xl font-display text-6xl font-light leading-[1.03] text-ink">
-          Caractéristiques sociodémographiques
+          Profil socioprofessionnel
         </h2>
         <p className="sd-sub mt-6 max-w-lg text-xl leading-relaxed text-muted">
           L'analyse révèle un profil majoritairement jeune, une forte

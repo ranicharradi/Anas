@@ -85,7 +85,7 @@ export const slides: SlideDef[] = [
   },
   {
     id: "caracteristiques-sociodemographiques",
-    title: "Caractéristiques sociodémographiques",
+    title: "Profil socioprofessionnel",
     act: "Résultats",
     Component: SocioDemoSlide,
   },
@@ -150,16 +150,16 @@ export const slides: SlideDef[] = [
     Component: RecommandationsSlide,
   },
   {
-    id: "assistant-ist",
-    title: "Un assistant pour la prévention",
-    act: "Recommandations",
-    Component: ChatbotSlide,
-  },
-  {
     id: "conclusion",
     title: "Conclusion",
     act: "Conclusion",
     Component: ConclusionSlide,
+  },
+  {
+    id: "assistant-ist",
+    title: "Un assistant pour la prévention",
+    act: "Recommandations",
+    Component: ChatbotSlide,
   },
   {
     id: "remerciements",

@@ -6,27 +6,9 @@ import careTeam from "@/assets/photos/care-team.jpg";
 
 /**
  * Conclusion (Canva page 27). A calm, editorial closing slide:
- * narrative paragraph + three takeaway pillars + optional sign-off.
- * Faint clinical decor mirrors IntroSlide's spirit without crowding text.
+ * narrative paragraph + closing photo. Faint clinical decor mirrors
+ * IntroSlide's spirit without crowding text.
  */
-
-const PILLARS = [
-  {
-    label: "Renforcer la formation",
-    gloss: "des infirmiers en prévention des IST.",
-    accent: "var(--color-clinic)",
-  },
-  {
-    label: "Améliorer les outils éducatifs",
-    gloss: "des supports pédagogiques adaptés et variés.",
-    accent: "var(--color-clinic-deep)",
-  },
-  {
-    label: "Adapter la prévention",
-    gloss: "des stratégies adaptées au contexte tunisien.",
-    accent: "var(--color-coral)",
-  },
-];
 
 export default function ConclusionSlide({ active }: SlideProps) {
   const root = useRef<HTMLDivElement>(null);
@@ -53,12 +35,7 @@ export default function ConclusionSlide({ active }: SlideProps) {
         .from(".concl-kicker", { y: 14, opacity: 0, duration: 0.5 }, 0.1)
         .from(split.words, { yPercent: 120, duration: 0.7, stagger: 0.05 }, 0.1)
         .from(".concl-narrative", { y: 22, opacity: 0, duration: 0.6 }, 0.4)
-        .from(".concl-photo", { opacity: 0, scale: 0.96, transformOrigin: "center", duration: 0.7 }, 0.45)
-        .from(
-          ".concl-pillar",
-          { y: 28, opacity: 0, duration: 0.55, stagger: 0.12, ease: "power2.out" },
-          0.58,
-        );
+        .from(".concl-photo", { opacity: 0, scale: 0.96, transformOrigin: "center", duration: 0.7 }, 0.45);
 
       return () => split.revert();
     },
@@ -68,7 +45,7 @@ export default function ConclusionSlide({ active }: SlideProps) {
   return (
     <div
       ref={root}
-      className="relative flex h-full flex-col gap-8 overflow-hidden px-20 py-12"
+      className="relative flex h-full flex-col justify-center gap-8 overflow-hidden px-20 py-12"
     >
       <Decor />
 
@@ -111,33 +88,6 @@ export default function ConclusionSlide({ active }: SlideProps) {
           position="center"
           className="concl-photo h-52 w-full rounded-2xl ring-1 ring-hair/50 shadow-[0_28px_90px_rgba(27,29,36,0.16)]"
         />
-      </div>
-
-      {/* Three takeaway pillars */}
-      <div className="grid flex-1 grid-cols-3 items-center gap-5">
-        {PILLARS.map((p) => (
-          <article
-            key={p.label}
-            className="concl-pillar flex h-full flex-col justify-between rounded-2xl border border-hair/60 bg-white/55 px-7 py-6 shadow-[0_28px_90px_rgba(27,29,36,0.10)] backdrop-blur-sm"
-          >
-            {/* Accent strip */}
-            <span
-              className="mb-5 block h-1 w-12 rounded-full"
-              style={{ backgroundColor: p.accent }}
-            />
-            <div className="flex-1">
-              <h3
-                className="font-display text-[1.6rem] font-light leading-snug"
-                style={{ color: p.accent }}
-              >
-                {p.label}
-              </h3>
-              <p className="mt-3 text-[19px] leading-relaxed text-muted">
-                {p.gloss}
-              </p>
-            </div>
-          </article>
-        ))}
       </div>
 
     </div>
