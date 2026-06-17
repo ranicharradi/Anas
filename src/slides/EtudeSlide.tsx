@@ -19,6 +19,9 @@ import tunisMap from "@/assets/tunis-map.jpg";
 
 const DESIGN = ["Quantitative", "Transversale", "Descriptive"];
 
+// Study sites, paired by index with the map markers (same colours = legend).
+const CENTRES = ["CSB Sijoumi", "CSB Hrairia", "CSB Cité Zouhour"];
+
 /*
  * Hospitals: real coordinates from OpenStreetMap Nominatim (La Rabta & Charles
  * Nicolle resolve exactly; Wassila Bourguiba is the maternity centre on the La
@@ -62,10 +65,7 @@ export default function EtudeSlide({ active }: SlideProps) {
       ease: "power3.inOut",
       overwrite: true,
     });
-    // highlight the active control + spotlight the focused pin
-    root.current?.querySelectorAll<HTMLElement>(".view-chip").forEach((c, ci) =>
-      c.classList.toggle("is-active", ci === i),
-    );
+    // spotlight the focused pin
     root.current?.querySelectorAll<HTMLElement>(".map-marker").forEach((m, mi) =>
       gsap.to(m, { opacity: i === 0 || mi === i - 1 ? 1 : 0.25, duration: 0.4 }),
     );
@@ -100,7 +100,7 @@ export default function EtudeSlide({ active }: SlideProps) {
           { scale: 1, opacity: 1, y: 0, duration: 0.5, stagger: 0.14, ease: "back.out(2.2)" },
           0.9,
         )
-        .from(".map-ui", { opacity: 0, y: 10, duration: 0.5 }, 1.1);
+        .from(".csb-chip", { opacity: 0, y: 10, duration: 0.5, stagger: 0.08 }, 1.1);
 
       return () => split.revert();
     },
@@ -112,7 +112,6 @@ export default function EtudeSlide({ active }: SlideProps) {
   // render. The react-hooks/refs rule can't see through contextSafe and reports
   // a false positive, so it's scoped off for just these two handlers.
   /* eslint-disable react-hooks/refs */
-  const onChip = contextSafe((i: number) => flyTo(i));
   const onMarker = contextSafe((i: number) =>
     flyTo(view.current === i + 1 ? 0 : i + 1),
   );
@@ -133,7 +132,7 @@ export default function EtudeSlide({ active }: SlideProps) {
   return (
     <div ref={root} className="grid h-full grid-cols-[1.05fr_0.95fr] items-center gap-12 px-20 py-12">
       {/* Left: study design fiche */}
-      <div>
+      <div className="ml-auto max-w-xl">
         <p className="etude-kicker mono-label text-clinic">02 · Méthodologie</p>
         <h2 className="etude-title mt-3 max-w-lg font-display text-6xl font-light leading-[1.04] text-ink">
           Type, lieu et date de l'étude
@@ -166,8 +165,8 @@ export default function EtudeSlide({ active }: SlideProps) {
         </div>
       </div>
 
-      {/* Right: zoomable street map */}
-      <div className="relative grid h-full place-items-center">
+      {/* Right: zoomable street map + study-site legend */}
+      <div className="relative flex h-full flex-col items-start justify-center gap-4">
         <div
           className="map-frame relative overflow-hidden rounded-2xl border border-hair/70 shadow-xl"
           style={{ height: "min(80vh, 660px)", aspectRatio: "1 / 1" }}
@@ -205,24 +204,19 @@ export default function EtudeSlide({ active }: SlideProps) {
           <div className="pointer-events-none absolute bottom-0 right-0 bg-white/70 px-1.5 py-0.5 text-[9px] text-muted">
             © OpenStreetMap · CARTO
           </div>
+        </div>
 
-          {/* controls */}
-          <div className="map-ui absolute inset-x-0 bottom-0 flex flex-wrap items-center justify-center gap-1.5 bg-gradient-to-t from-black/25 to-transparent p-3">
-            <button type="button" onClick={() => onChip(0)} className="view-chip is-active rounded-full border border-white/70 bg-white/85 px-3 py-1.5 text-xs font-semibold text-ink transition data-[x]:bg-white">
-              Vue d'ensemble
-            </button>
-            {HOSPITALS.map((h, i) => (
-              <button
-                key={h.name}
-                type="button"
-                onClick={() => onChip(i + 1)}
-                className="view-chip flex items-center gap-1.5 rounded-full border border-white/70 bg-white/85 px-3 py-1.5 text-xs font-semibold text-ink transition"
-              >
-                <span className="h-2 w-2 rounded-full" style={{ background: h.color }} />
-                {h.short}
-              </button>
-            ))}
-          </div>
+        {/* Study-site legend (matches the map markers) */}
+        <div className="flex flex-wrap gap-2.5">
+          {HOSPITALS.map((h, i) => (
+            <span
+              key={CENTRES[i]}
+              className="csb-chip flex items-center gap-2 rounded-full border border-hair/60 bg-paper/70 px-4 py-2 text-sm font-semibold text-ink"
+            >
+              <span className="h-2.5 w-2.5 rounded-full" style={{ background: h.color }} />
+              {CENTRES[i]}
+            </span>
+          ))}
         </div>
       </div>
     </div>
