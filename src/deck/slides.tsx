@@ -18,6 +18,7 @@ import MotivationSlide from "@/slides/MotivationSlide";
 import CommunicationSlide from "@/slides/CommunicationSlide";
 import PratiquesEducativesSlide from "@/slides/PratiquesEducativesSlide";
 import FormationDifficultesSlide from "@/slides/FormationDifficultesSlide";
+import PointsFortsLimitesSlide from "@/slides/PointsFortsLimitesSlide";
 import RecommandationsSlide from "@/slides/RecommandationsSlide";
 import ChatbotSlide from "@/slides/ChatbotSlide";
 import ConclusionSlide from "@/slides/ConclusionSlide";
@@ -142,6 +143,12 @@ export const slides: SlideDef[] = [
     title: "Formation et difficultés rencontrées",
     act: "Résultats",
     Component: FormationDifficultesSlide,
+  },
+  {
+    id: "points-forts-limites",
+    title: "Points forts et limites",
+    act: "Résultats",
+    Component: PointsFortsLimitesSlide,
   },
   {
     id: "recommandations",
