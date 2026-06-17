@@ -21,6 +21,7 @@ pnpm preview  # preview the production build
 ## Companion site
 
 A public, adolescent-facing companion site lives at `site.html` (deck stays at `/`).
-Its AI assistant calls the Vercel edge function `api/chat.ts`, which holds
-`OPENROUTER_API_KEY` server-side. Set that env var in the Vercel project (no
-`VITE_` prefix). Local function dev: `vercel dev`.
+Its AI assistant behaves exactly like the deck's demo slide: it reuses
+`src/lib/openrouter.ts`, calling OpenRouter directly from the browser with the
+same `VITE_OPENROUTER_API_KEY`. Note that key is bundled into the client, so use
+a capped, disposable key (see `.env.example`).

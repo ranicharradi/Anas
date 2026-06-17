@@ -1,7 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import type { FormEvent } from "react";
 import NurseLogo from "@/components/NurseLogo";
-import { streamChat, FALLBACK_ANSWER, type ChatMessage } from "@/site/lib/chat";
+// Share the deck demo's chat client exactly: same OpenRouter call, same
+// VITE_OPENROUTER_API_KEY, same system prompt, model, and fallback.
+import { streamChat, FALLBACK_ANSWER, type ChatMessage } from "@/lib/openrouter";
 
 interface DisplayMessage extends ChatMessage {
   fallback?: boolean;
