@@ -10,15 +10,21 @@ export interface ChatMessage {
 
 export const FALLBACK_ANSWER = `Se protéger des IST, c'est avant tout utiliser un préservatif à chaque rapport, se faire dépister régulièrement (beaucoup d'IST ne donnent aucun signe), et oser en parler sans honte. Pour un conseil adapté à ta situation, rapproche-toi d'un professionnel de santé ou du centre de santé le plus proche.`;
 
+/** Abort a stalled request so the UI falls back instead of hanging on "…". */
+const REQUEST_TIMEOUT_MS = 25_000;
+
 export async function streamChat(
   messages: ChatMessage[],
   onToken: (chunk: string) => void,
 ): Promise<{ ok: boolean }> {
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
   try {
     const res = await fetch("/api/chat", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ messages }),
+      signal: controller.signal,
     });
     if (!res.ok || !res.body) return { ok: false };
 
@@ -38,5 +44,7 @@ export async function streamChat(
     return { ok: received };
   } catch {
     return { ok: false };
+  } finally {
+    clearTimeout(timeout);
   }
 }
