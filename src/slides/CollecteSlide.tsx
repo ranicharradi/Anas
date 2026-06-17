@@ -18,7 +18,7 @@ interface Volet {
 }
 
 const VOLETS: Volet[] = [
-  { n: "01", label: "Identification de l'infirmier", q: 6, color: "var(--color-clinic)" },
+  { n: "01", label: "Profil socioprofessionnel", q: 6, color: "var(--color-clinic)" },
   { n: "02", label: "Connaissances sur les IST", q: 13, color: "var(--color-clinic-deep)" },
   { n: "03", label: "Attitudes professionnelles", q: 8, color: "var(--color-coral)" },
   { n: "04", label: "Pratiques éducatives", q: 7, color: "#d8a23a" },

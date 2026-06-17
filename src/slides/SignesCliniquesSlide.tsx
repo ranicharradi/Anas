@@ -89,7 +89,6 @@ export default function SignesCliniquesSlide({ active }: SlideProps) {
               Signes cliniques cités
             </h3>
           </div>
-          <p className="mono-label text-muted">part des répondants</p>
         </div>
 
         <div

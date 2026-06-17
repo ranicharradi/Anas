@@ -30,8 +30,7 @@ const PLAN: Pick<Step, "lines" | "icon" | "labelSize">[] = [
   { lines: ["Introduction"], icon: "search" },
   { lines: ["Méthodologie"], icon: "clipboard" },
   { lines: ["Résultat et", "discussion"], icon: "chart" },
-  { lines: ["Points forts", "et limites"], icon: "scale" },
-  { lines: ["Recommandations"], icon: "thumb", labelSize: 19 },
+  { lines: ["Recommandations"], icon: "thumb" },
   { lines: ["Conclusion"], icon: "shield" },
 ];
 

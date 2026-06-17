@@ -129,7 +129,7 @@ export default function ResultatsDiscussionSlide({ active }: SlideProps) {
           <div className="rd-card absolute left-2 top-8 max-w-[15rem] rounded-lg border border-hair/60 bg-white/70 px-5 py-4 shadow-xl backdrop-blur-sm">
             <p className="mono-label text-clinic">Axe 01</p>
             <p className="mt-1 text-lg font-semibold leading-snug text-ink">
-              Caractéristiques socio-démographiques
+              Profil socioprofessionnel
             </p>
           </div>
           <div className="rd-card absolute right-10 top-36 max-w-[15rem] rounded-lg border border-hair/60 bg-white/70 px-5 py-4 shadow-xl backdrop-blur-sm">

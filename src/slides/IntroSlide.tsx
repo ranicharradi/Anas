@@ -18,10 +18,9 @@ const PILIERS = ["Sensibilisation", "Éducation", "Dépistage", "Accompagnement"
 
 const PROBLEMATIQUE_AXES = [
   "Le niveau des pratiques éducatives infirmières.",
-  "Les moyens et compétences disponibles.",
-  "L’impact de ces pratiques sur les comportements à risque.",
+  "Indications du dépistage.",
   "Les obstacles socioculturels.",
-  "Le niveau d’éducation des adolescents concernant la prévention des IST.",
+  "Le niveau d’éducation des infirmiers concernant la prévention des IST.",
 ];
 
 export default function IntroSlide({ active }: SlideProps) {
