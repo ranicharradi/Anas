@@ -61,6 +61,7 @@ export default function PointsFortsLimitesSlide({ active }: SlideProps) {
           { scale: 0, opacity: 0, transformOrigin: "center", duration: 0.5, stagger: 0.16, ease: "back.out(1.8)" },
           0.55,
         )
+        .from(".pfl-lead", { opacity: 0, y: 10, duration: 0.5 }, 0.6)
         .from(".pfl-item", { opacity: 0, x: 18, duration: 0.5, stagger: 0.09 }, 0.66);
 
       return () => split.revert();
@@ -91,6 +92,7 @@ export default function PointsFortsLimitesSlide({ active }: SlideProps) {
 
         <Panel
           title="Points forts"
+          lead="L'étude ne fait pas que décrire le problème, elle agit :"
           accent="var(--color-clinic-deep)"
           tint="var(--color-clinic-soft)"
           icon={<IconCheck />}
@@ -100,6 +102,7 @@ export default function PointsFortsLimitesSlide({ active }: SlideProps) {
 
         <Panel
           title="Limites"
+          lead="Malgré ces points forts, quelques limites sont à garder en tête :"
           accent="var(--color-coral)"
           tint="color-mix(in srgb, var(--color-coral) 16%, transparent)"
           icon={<IconAlert />}
@@ -113,6 +116,7 @@ export default function PointsFortsLimitesSlide({ active }: SlideProps) {
 
 function Panel({
   title,
+  lead,
   accent,
   tint,
   icon,
@@ -120,6 +124,7 @@ function Panel({
   marker,
 }: {
   title: string;
+  lead?: string;
   accent: string;
   tint: string;
   icon: React.ReactNode;
@@ -146,7 +151,13 @@ function Panel({
         aria-hidden
       />
 
-      <ul className="mt-10 flex flex-col gap-9">
+      {lead ? (
+        <p className="pfl-lead mt-6 text-[19px] italic leading-[1.55] text-ink/65">
+          {lead}
+        </p>
+      ) : null}
+
+      <ul className={`${lead ? "mt-7" : "mt-10"} flex flex-col gap-9`}>
         {items.map((item) => (
           <li key={item} className="pfl-item flex items-start gap-5">
             <span
